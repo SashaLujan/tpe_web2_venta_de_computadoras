@@ -31,11 +31,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="login-container">
-                    <form class="form_log" action="loguearse" method="POST">
-                        <input type="text" placeholder="Username" name="username">
-                        <input type="password" placeholder="Password" name="psw">
-                        <button type="submit">Login</button>
-                    </form>
+                <div>
+                    <a class="navbar-brand" href="cerrar_sesion"><b>Cerrar Sesion</b></a>
                 </div>
             </nav>

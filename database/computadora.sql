@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2020 a las 05:17:15
+-- Tiempo de generación: 22-05-2020 a las 21:19:08
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE `administradores` (
+  `id_administrador` int(2) NOT NULL,
+  `nombre` varchar(25) DEFAULT NULL,
+  `nombre_usuario` varchar(25) DEFAULT NULL,
+  `contraseña` int(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`) VALUES
+(0, 'sasha lujan', 'lujanSasha', 12345);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `computadora`
 --
 
@@ -40,7 +60,6 @@ CREATE TABLE `computadora` (
 --
 
 INSERT INTO `computadora` (`id_computadora`, `nombre`, `sistOperativo`, `id_marca_fk`) VALUES
-(3, 'Notebook', 'windows 8', 1),
 (4, 'pc', 'windows 7', 2),
 (5, 'pc', 'windows 10', 3),
 (6, 'Notebook', 'windows 8.1', 4),
@@ -76,6 +95,12 @@ INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`id_administrador`);
 
 --
 -- Indices de la tabla `computadora`

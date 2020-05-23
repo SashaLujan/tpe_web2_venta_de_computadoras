@@ -1,14 +1,35 @@
 {include 'header.tpl'}
-
-<h2>Marcas disponibles</h2>
-<table class='table table-hover table-striped table-bordered table table-condensed' style='width:400px'>
-       <tr style='color:black'><th scope='col'>MARCA</th>
-        {foreach $listamarca item= marca}
-           <tr>
-             <td><a href='computadora_por_marca/{$marca->id_marca}' class='btn btn-link '>{strtoupper($marca->nombre)}</a>  
-             {if $esadmin==1}
-                  <td> <a href='borrar_marca/{$marca->id_marca} class='btn btn-link>Borrar </a></td>
-                  <td> <a href='editar_marca/{$marca->id_marca} class='btn btn-link>Editar </a></td>
-              {/if}
-            </tr>
+    {if {!$esAdmin}} {*SI NO ES UN ADMINISTRADOR*}
+        <div class="titulo_ver_comp">
+            <p><b>Marcas</b></p>
+        </div>
+    {/if}
+    {if {$esAdmin}} {*SI ES UN ADMINISTRADOR*}
+        <div class="centrar btn_alta">  
+            <h4><a class="btn btn-danger" href="agregarMarca"><b>Alta</b></a></h4>
+        </div>
+    {/if}
+    <div class="contenedor">
+        {foreach from=$listaMarca item=marca} 
+            <div class="contenedor_marca">
+                <div class="centrar">
+                    <b class="nombre">{$marca->nombre}</b>
+                </div>
+                <div class="centrar">
+                    <a class="btn btn-danger" href="marca/{$marca->id_marca}">Ver Computadoras</a>
+                </div>
+                {if {!$esAdmin}} {*SI NO ES UN ADMINISTRADOR*}
+                    <div class="centrar">
+                        <a class="btn btn-danger" href="computadorapormarca/{$marca->id_marca}"><b>Ver Computadoras</b></a>
+                    </div>          
+                {/if}
+                {if {$esAdmin}} {*SI ES UN ADMINISTRADOR*}
+                    <div class="centrar">
+                        <a class="btn btn-danger" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
+                        <a class="btn btn-danger" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
+                    </div>
+                {/if}
+            </div>
         {/foreach}
+    </div>
+{include 'footer.tpl'}
