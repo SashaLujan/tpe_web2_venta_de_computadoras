@@ -1,6 +1,5 @@
 <?php
-//Interactua con la tabla computadora
-class ComputerModel
+class ComputersModel
 {
     private function createConection()
     {
@@ -24,27 +23,29 @@ class ComputerModel
         return $computadora;
     }
 
-    //computadoraas de un tipo de marca
-    public function getComputersMark($id_marca)
-    {
-        $db = $this->createConection(); // 1. abro la conexión con MySQL 
-        //Creamos la consulta para obtener una categoria
-        $sentencia = $db->prepare("SELECT computadora, id_computadora, nombre, marca, sistOperativo,marca.id_marca, marca.nombre as marca
-        FROM computadora INNER JOIN marca ON marca.id_marca=computadora.id_marca 
-        WHERE marca.id_marca=? ORDER BY computadora.nombre ASC "); // prepara la consulta
-        $sentencia->execute([$id_marca]); // ejecuta --> LLEGA BIEN SIN FILTRAR POR MARCA
-        $computadorapormarca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
-        return $computadorapormarca;
-    }
-
-    public function getone($id)
+    //muestra una sola computadora
+    public function get($id_computadora)
     {
         $db = $this->createConection(); // 1. abro la conexión con MySQL 
         //Creamos la consulta para obtener una categoria
         $sentencia = $db->prepare("SELECT * FROM computadora  WHERE id_computadora=?"); // prepara la consulta
-        $sentencia->execute([$id]); // ejecuta
+        $sentencia->execute([$id_computadora]); // ejecuta
         $computadora = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
         return $computadora;
+    }
+
+    //computadoraas de un tipo de marca
+    public function getComputerMarks($id_marca)
+    {
+        $db = $this->createConection(); // 1. abro la conexión con MySQL 
+        //Creamos la consulta para obtener una categoria
+        $sentencia = $db->prepare("SELECT computadora, id_computadora, nombre, marca, sistOperativo
+        FROM computadora 
+        INNER JOIN marca ON computadora.id_marca = marca.id_marca
+        WHERE marca.id_marca=$id_marca ORDER BY computadora"); // prepara la consulta
+        $sentencia->execute([$id_marca]); // ejecuta --> LLEGA BIEN SIN FILTRAR POR MARCA
+        $computadorapormarca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        return $computadorapormarca;
     }
 
     public function insert($computadora, $nombre, $sistOperativo, $id_marca_fk)
@@ -60,14 +61,12 @@ class ComputerModel
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
-
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("UPDATE computadora SET  nombre=? , marca=? , sistOperativo=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
         $sentencia->execute([$nombre, $marca, $sistOperativo, $id_marca_fk]); // ejecuta
     }
 
-
-    public function deleteComputer($id_computadora)
+    public function delete($id_computadora)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();

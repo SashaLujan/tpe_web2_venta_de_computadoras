@@ -1,7 +1,5 @@
 <?php
-
-class AdminModel{
-
+class LoginModel{
     private function createConection()
     {
         $host = 'localhost';
@@ -12,15 +10,15 @@ class AdminModel{
         return $pdo;
     }
 
-    //devuelve el admin si existe en la DDBB o vacio si no existe
-    public function getAuth($username) {
-        //Me conecto con la DDBB
+    //devuelve todas las computadoras
+    public function getAdmin($username)
+    {
+        // 1. abro la conexión con MySQL 
         $db = $this->createConection();
-        //Hacemos la consulta
-        $sentencia = $db->prepare("SELECT * FROM administradores WHERE nombre_usuario = ?");    //Preparo la sentencia sql para hacer la consulta
+        // 2. enviamos la consulta (3 pasos)
+        $sentencia = $db->prepare("SELECT * FROM administradores WHERE nombre_usuario = ?"); // prepara la consulta
         $sentencia->execute([$username]); // ejecuta
-    $administrador = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
-    return $administrador;
+        $administrador = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        return $administrador;
     }
-    
 }
