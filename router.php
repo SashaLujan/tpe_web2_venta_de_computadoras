@@ -1,8 +1,6 @@
 <?php
-
-require_once 'controllers/computer.controller.php';
-require_once 'controllers/mark.controller.php';
-require_once 'controllers/auth.controller.php';
+require_once 'controllers/public.controller.php';
+require_once 'controllers/admin.controller.php';
 require_once 'controllers/login.controller.php';
 
 // definimos la base url de forma dinamica
@@ -17,107 +15,112 @@ $accion = $_GET['action'];
 $parametros = explode('/', $accion);
 
 switch($parametros[0]){
+
+    //acciones del public.controller
     case 'home': {
-        $controller = new ComputerController();     
+        $controller = new PublicController();     
         $controller->home();
     break;
     }
-    case 'listaComutadora': {
-        $controller = new ComputerController();     
-        $controller->showComputers();
+    case 'listaComp': {
+        $controller = new PublicController();     
+        $controller->showComputer();
     break;
     }
-    case 'ver_comp': {
-        $controller = new ComputerController();     
-        $controller->ViewComputer($parametros[1]);
+    case 'verComp': {
+        $controller = new PublicController();     
+        $controller->viewComputer($parametros[1]);
     break;
     }
     case 'listaMarca': {
-        $controller = new MarkController();     
-        $controller->showMarks();
+        $controller = new PublicController();     
+        $controller->showMark();
     break;
     }
-    case 'computadorapormarca': {
-        $controller = new ComputerController();     
-        $controller->showComputersByMark($parametros[1]);
+    case 'marca_comp': {
+        $controller = new PublicController();     
+        $controller->showComputerByMark($parametros[1]);
     break;
     }
 
-    // -- Acciones del auth.controller
+    //acciones del admin.controller
 
-    case 'computadora': {
-        $controller = new AuthController();  
+    case 'computadoras': {
+        $controller = new AdminController();  
         $controller->computers();
     break;
     }
 
-    case 'marca': {
-        $controller = new AuthController();  
+    case 'marcas': {
+        $controller = new AdminController();  
         $controller->marks();
     break;
     }
 
-    case 'agregarComputadora': {
-        $controller = new AuthController();  
+    case 'agregarComp': {
+        $controller = new AdminController();  
         $controller->formComputer();
     break;
     }
 
-    case 'guardarComputadora': {
-        $controller = new AuthController();  
+    case 'guardarComp': {
+        $controller = new AdminController();  
         $controller->addComputer();
     break;
     }
     
     case 'agregarMarca': {
-        $controller = new AuthController();  
+        $controller = new AdminController();  
         $controller->formMark();
     break;
     }
 
     case 'guardarMarca': {
-        $controller = new AuthController();  
+        $controller = new AdminController();  
         $controller->addMark();
     break;
     }
+
     case 'loguearse': {
         $controller = new LoginController();  
-        $controller->loginAuth();
+        $controller->loginAdmin();
     break;
     }
     case 'elegirOpcion': {
-        $controller = new AuthController();  
+        $controller = new AdminController();  
         $controller->showOption();
     break;
     }
-    case 'editarComputadora': {
-        $controller = new AuthController();  
+
+    case 'editarComp': {
+        $controller = new AdminController();  
         $controller->editComputer($parametros[1]);
     break;
     }
-    case 'guardarEditComputadora': {
-        $controller = new AuthController();  
+    case 'guardarEditComputer': {
+        $controller = new AdminController();  
         $controller->modifyComputer();
     break;
     }
-    case 'eliminarComputadora': {
-        $controller = new AuthController();  
+    case 'eliminarComp': {
+        $controller = new AdminController();  
         $controller->deleteComputer($parametros[1]);
     break;
     }
     case 'editarMarca': {
-        $controller = new AuthController();  
+        $controller = new AdminController();  
         $controller->editMark($parametros[1]);
     break;
     }
     case 'guardarEditMarca': {
-        $controller = new AuthController();  
+        $controller = new AdminController();  
         $controller->modifyMark();
     break;
     }
-    case 'eliminarMarca': {
-        $controller = new AuthController();  
+    case 'eliminarMMarca': {
+        $controller = new AdminController();  
         $controller->deleteMark($parametros[1]);
+        header ('Location: ' .BASE_URL. 'listaMarca');
     break;
     }
     case 'cerrar_sesion': {
@@ -125,14 +128,14 @@ switch($parametros[0]){
         $controller->logout();
     break;
     }
-    case 'ver_marca': {
-        $controller = new MarkController();     
-        $controller->showMarks($parametros[1],$parametros[2]);
+    case 'verCompMarca': {
+        $controller = new PublicController();     
+        $controller->viewComputerMark($parametros[1],$parametros[2]);
     break;
     }
     default: {
-        $controller = new ComputerController();     
-        $controller->showError("Error, vuelva a intentarlo.","imagenes/logo.jpeg");
+        $controller = new PublicController();     
+        $controller->showError("Se ha producido un error, vuelva a intentarlo","images/");
     }    
 }
     
