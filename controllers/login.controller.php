@@ -1,50 +1,54 @@
 <?php
 
 require_once 'models/login.model.php';
-require_once 'views/computer.view.php';
-require_once 'views/mark.view.php';
+require_once 'views/public.view.php';
+require_once 'views/admin.view.php';
 
 class LoginController{
-
-    //Variables globales del controlador
     private $modelLogin;
-    private $view;
-    
-    public function __construct() { //Constructor de la clase
-        
-        $this->modelLogin = new AuthModel();
-        $this->view = new AuthView();
+    private $viewAdmin;
+    private $viewPublic;
+
+    public function __construct()
+    {
+        $this->modelLogin = new AdminModel();
+        $this->viewAdmin = new AdminView();
+        $this->viewPublic =new PublicView();
     }
 
-    //Controla que el usuario ingresado sea correcto
-    public function loginAuth(){
-        if(empty($_POST['username']) || empty($_POST['psw'])) {   
-            
-            echo "No ingreso todos los datos requeridos";
-            
-        } else {
+    //verifica que el usuario ingresado sea correcto
+    public function loginAdmin(){
+        $urlPag = explode('/', $_SERVER['HTTP_REFERER']);
+        $accion = end($urlPag);
+        if(empty($_POST['username'])|| empty($_POST['psw'])){
+            $this->viewPublic->showHome(false, "Completar todos los campos");
+        }
+        else {
             $username = $_POST['username'];
             $password = $_POST['psw'];
-            $user = $this->modelLogin->getAuth($username);
-
-            if($user) {
-                if(password_verify($password, $user->contraseña)) {
-                    session_start();                                    //Abro la sesion
-                    $_SESSION['NOMBRE_USUARIO'] = $user->nombre;        //Guardo el nombre del usuario
-                    $this->view->welcome($user->nombre); 
+            $user = $this->modelLogin->getAdmin($username);
+            if($user){
+                if(password_verify($password,$user->contraseña)){
+                    session_start(); //abro la sesion
+                    $_SESSION['IS_LOGGED'] = true;
+                    $_SESSION['nombreUsuario'] = $user->nombre; //guardo el nombre de usuario
+                    $this->viewAdmin->welcome($user->nombre);
                 } else {
-                    echo "contraseña incorrecta";
+                    var_dump($accion);
+                    die;
+                    $this->viewPublic->showHome(false, "contraseña incorrecta");
                 }
-            } else {
-                echo "el usuario no existe";
+            }
+            else{
+                $this->viewPublic->showHome(false, "El usuario no exise");
             }
         }
     }
-    //cierra la sesion que se encuentra abierta y se dirige al home
-    public function logout() {
-        session_start();
-        session_destroy();
-        header('Location: home');
+    
+        //cierra la sesion que esta abierta y redirige al home
+        public function logout(){
+            session_start();
+            session_destroy();
+            header('Location: home');
+        }
     }
-}
-
