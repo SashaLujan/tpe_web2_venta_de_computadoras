@@ -48,7 +48,7 @@ class AdminView{
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditComputer.tpl');
     }
-    public function showFormEditMarca($marca, $error = null){
+    public function showFormEditMark($marca, $error = null){
         $this->smarty->assign('marca', $marca);
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditMarca.tpl');

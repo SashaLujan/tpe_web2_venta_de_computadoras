@@ -34,22 +34,22 @@ class MarksModel{
         return $marca;
     }
 
-    public function insert($marca,$id_marca,$nombre)
+    public function insert($marca,$nombre)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
         $sentencia = $db->prepare("INSERT INTO marca(id_marca, nombre) VALUES(?)"); // prepara la consulta
-        return $sentencia->execute([$marca,$id_marca,$nombre]); // ejecuta
+        return $sentencia->execute([$marca,$nombre]); // ejecuta
     }
 
-    public function update($id_marca,$marca,$nombre)
+    public function update($marca,$nombre)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("UPDATE marca SET nombre=? WHERE id_marca=?"); // prepara la consulta
-        $sentencia->execute([$id_marca,$marca,$nombre]); // ejecuta
+        $sentencia->execute([$marca,$nombre]); // ejecuta
     }
 
     public function delete($id_marca)

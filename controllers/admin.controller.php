@@ -1,4 +1,4 @@
-<?
+<?php
 require_once 'models/computers.model.php';
 require_once 'models/marks.model.php';
 require_once 'models/login.model.php';
@@ -121,9 +121,9 @@ class AdminController{
     public function modifyMark(){
         if(empty($_POST['marca']) || empty($_POST['name'])){
             $marca = $this->modelMarks->get($_POST['marca']);
-            $this->viewAdmin->showFormEditComputer($marca);
+            $this->viewAdmin->showFormEditMark($marca);
         }
-        $this->modelComputers->update($_POST['marca'], $_POST['name']);
+        $this->modelMarks->update($_POST['marca'], $_POST['name']);
     }
 
     public function deleteMark($id_marca){
