@@ -25,7 +25,7 @@ class PublicView{
         $this->smarty->assign('listaComp', $computadoras);
         $this->smarty->assign('isAdmin', $admin);
         $this->smarty->assign('error', $error);
-        $this->smarty->display('templates/showPlayers.tpl');
+        $this->smarty->display('templates/showComputers.tpl');
     }
 
     public function showComputer($computadora, $computadoras, $admin, $error = null) {
@@ -54,6 +54,6 @@ class PublicView{
        $this->smarty->assign('computadoraPorMarca', $computadoraPorMarca);
        $this->smarty->assign('isAdmin', $admin);
        $this->smarty->assign('error', $error);
-       $this->smarty->display('templates/ComputersByMark.tpl');
+       $this->smarty->display('templates/computersByMark.tpl');
     }
 }
