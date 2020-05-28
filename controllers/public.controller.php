@@ -1,8 +1,8 @@
 <?php
 
-require_once 'models/mark.model.php';
+require_once 'models/marks.model.php';
 require_once 'models/computers.model.php';
-require_once ' views/public.view.php';
+require_once 'views/public.view.php';
 require_once 'helpers/auth.helper.php';
 
 class PublicController{
