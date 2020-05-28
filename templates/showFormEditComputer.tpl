@@ -1,4 +1,4 @@
-{include 'templates/headerAdmin.tpl'}
+{include 'templates/header.tpl'}
     <div class="container">  
         <h1>Edite la computadora{$computadora[0]->nombre}</h1>
         <form action="guardarEditComputer/{$computadora[0]->nombre}" method="post" class="my-4">

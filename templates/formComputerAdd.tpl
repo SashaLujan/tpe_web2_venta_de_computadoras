@@ -1,4 +1,4 @@
-{include 'headerAdmin.tpl'}
+{include 'header.tpl'}
     <div class="container">
         <h1>Inserte una computadora</h1>
         <form action="agregarComp" method="post" class="my-4">

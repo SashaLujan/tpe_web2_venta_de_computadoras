@@ -1,4 +1,4 @@
-{include 'templates/headerAdmin.tpl'}
+{include 'templates/header.tpl'}
     <div class="container">
         <h1>Inserte una marca</h1>
         <form action="agregarMarca" method="post" class="my-4">

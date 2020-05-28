@@ -1,4 +1,4 @@
-{include 'templates/headerAdmin.tpl'}
+{include 'templates/header.tpl'}
     
     <div class="container">  
         <h1>Edite la marca {$item[0]->nombre}</h1>

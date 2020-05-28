@@ -1,9 +1,4 @@
-{if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
-    {include 'headerAdmin.tpl'}
-{/if}
-{if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
-    {include 'header.tpl'}
-{/if}
+{include 'header.tpl'}
 {if $isAdmin} 
     <table class='table table-hover table-striped table-bordered table table-condensed' style='width:900px'>
         <tr>

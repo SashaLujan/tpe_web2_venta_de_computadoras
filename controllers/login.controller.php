@@ -18,18 +18,18 @@ class LoginController{
 
     //verifica que el usuario ingresado sea correcto
     public function loginAdmin(){
-        if(empty($_POST['username'])|| empty($_POST['psw'])){
+        if(empty($_POST['username'])|| empty($_POST['contraseña'])){
             $this->viewPublic->showHome(false,"Completar todos los campos");
         }
         else {
             $username = $_POST['username'];
-            $password = $_POST['psw'];
+            $password = $_POST['contraseña'];
             $user = $this->modelLogin->getAdmin($username);
             if($user){
-                if(password_verify($password,$username->contraseñaa)){
+                if(password_verify($password,$username->contraseña)){
                     session_start(); //abro la sesion
                     $_SESSION['IS_LOGGED'] = true;
-                    $_SESSION['nombreUsuario'] = $username->nombre; //guardo el nombre de usuario
+                    $_SESSION['nombre_suario'] = $username->nombre; //guardo el nombre de usuario
                     $this->viewAdmin->welcome($username->nombre);
                 } else {
                     $this->viewPublic->showHome(false, "contraseña incorrecta");

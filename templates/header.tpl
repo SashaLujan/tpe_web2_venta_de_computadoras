@@ -33,9 +33,14 @@
                 </div>
                 <div class="login-container">
                     <form class="form_log" action="loguearse" method="POST">
+                        {if !$isAdmin}
                         <input type="text" placeholder="username" name="username">
-                        <input type="password" placeholder="Password" name="psw">
+                        <input type="password" placeholder="Password" name="contraseña">
                         <button type="submit">Login</button>
+                        {/if}
+                        {if $isAdmin}
+                        <a class="navbar-brand" href='cerrar_sesion'><p class="">Usuario: {$administrador}</p>  Logout </a>
+                        {/if}
                     </form>
                 </div>
             </nav>
