@@ -18,17 +18,15 @@ class LoginController{
 
     //verifica que el usuario ingresado sea correcto
     public function loginAdmin(){
-        $urlPag = explode('/', $_SERVER['HTTP_REFERER']);
-        $accion = end($urlPag);
         if(empty($_POST['username'])|| empty($_POST['psw'])){
-            $this->viewPublic->showHome(false, "Completar todos los campos");
+            $this->viewPublic->showHome(false,"Completar todos los campos");
         }
         else {
             $username = $_POST['username'];
             $password = $_POST['psw'];
             $user = $this->modelLogin->getAdmin($username);
             if($user){
-                if(password_verify($password,$user->contrasenia)){
+                if(password_verify($password,$user->contraseñaa)){
                     session_start(); //abro la sesion
                     $_SESSION['IS_LOGGED'] = true;
                     $_SESSION['nombreUsuario'] = $user->nombre; //guardo el nombre de usuario
@@ -49,6 +47,6 @@ class LoginController{
         public function logout(){
             session_start();
             session_destroy();
-            header('Location: home');
+            header('Location:' .BASE_URL 'home');
         }
     }
