@@ -68,10 +68,6 @@ switch ($parametros[0]) {
             $controller = new LoginController();
             $controller->loginAdmin();
             break;
-    case 'elegirOpcion':
-            $controller = new AdminController();
-            $controller->showOption();
-            break;
     case 'editarComp':
             $controller = new AdminController();
             $controller->editComputer($parametros[1]);
