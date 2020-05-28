@@ -23,7 +23,7 @@ class AdminView{
     //
     public function showComputers($computadoras) {
         $this->smarty->assign('listaComp', $computadoras);
-        $this->smarty->display('templates/showComputersAdmin.tpl');
+        $this->smarty->display('templates/showComputer.tpl');
     }
 
     public function showMarks($marcas) {

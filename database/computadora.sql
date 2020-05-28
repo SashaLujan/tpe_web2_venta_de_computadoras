@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2020 a las 21:19:08
+-- Tiempo de generación: 28-05-2020 a las 07:57:43
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -32,7 +32,7 @@ CREATE TABLE `administradores` (
   `id_administrador` int(2) NOT NULL,
   `nombre` varchar(25) DEFAULT NULL,
   `nombre_usuario` varchar(25) DEFAULT NULL,
-  `contraseña` int(15) DEFAULT NULL
+  `contraseña` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `administradores` (
 --
 
 INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`) VALUES
-(0, 'sasha lujan', 'lujanSasha', 12345);
+(0, 'sasha lujan', 'lujanSasha', '$2y$12$zPzdWTIun4FCqsQxsZbT1eB/etmxH3YBj28ADZcRjEI7WaBrCXkzq');
 
 -- --------------------------------------------------------
 

@@ -1,33 +1,19 @@
 {include 'templates/headerAdmin.tpl'}
-    <form id="editComputer" action="guardarEditComp" method="POST">
-        <h1>Realice los cambios que crea necesarios</h1>
-        <input type="hidden" name="nombre" value="{$comutadora->id_comutadora}">
-        <div>
-            <label>nombre de la computadora</label>
-            <input type="text" name="nombre" value="{$comutadora->nombre}">
-        </div>
-        <div>
-            <label>Sistema Operativo</label>
-            <input type="text" name="sistOperativo" value="{$comutadora->sistOperativo}">
-        </div>
-        <div>
-            <label>marca</label>
-            <select name="marca" value="{$computadora->id_computadora}">
-                <option selected>{$computadora->id_computadora}</option>
-                {foreach from=$listaComp item=computadora} 
-                    <option>{$computadora->id_computadora}</option>
-                {/foreach}
-            </select>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-danger"><b>Enviar</b></button>
-            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
+    <div class="container">  
+        <h1>Edite la computadora{$computadora[0]->nombre}</h1>
+        <form action="guardarEditComputer/{$computadora[0]->nombre}" method="post" class="my-4">
+        <div class="form-group">
+                    <input name="idcomputadora" type="hidden" value={$computadora[0]->id_computadora} class="form-control">                            <label>nombre</label>
+                    <input name="nombrecomputadora" type="text" value={$computadora[0]->nombre} class="form-control">
+                             <label>Marca</label>
+                    <input name="marcacomputadora" type="text" value={$computadora[0]->marca} class="form-control">
+                             <label>Sistema Operativo</label>
+                    <input name="sistOpertaivo" type="text" value={$computadora[0]->precio} class="form-control">
+                             
+                    <input name="marcacomputadora" type="hidden" value={$computadora[0]->id_marca} class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
         </div>
 
-       {if {$error}}
-            <div class="alert alert-danger">
-                {$error}
-            </div>
-        {/if} 
-    </form>
-{include 'footer.tpl'}    
+{include 'footer.tpl'}

@@ -18,11 +18,11 @@
     {foreach from=$listaMarca item=marca} 
         <div>
             <div>
-                <b class="nombre">{$marca->nombre} marca</b>
+                <b class="nombre">{$marca->nombre}</b>
             </div>
             {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
                 <div>
-                    <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadora/b></a>
+                    <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadora</b></a>
                 </div>          
             {/if}
             {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}

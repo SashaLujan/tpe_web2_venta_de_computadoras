@@ -4,43 +4,14 @@
 {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
     {include 'header.tpl'}
 {/if}
-<div>
-    <p><b>Computadoras</b></p>
-</div>
-<div>
-    <div>
-        {if {$isAdmin}} {* SI ES ADMINISTRADOR*}
-            <h4><a class="btn btn-danger centrar" href="editarComp/{$datosComp->id_computadora}"><b>Editar</b></a></h4>
-            <h4><a class="btn btn-danger centrar" href="eliminarComp/{$datosComp->id_computadora}"><b>Baja</b></a></h4>
-        {/if}
-        <h4><a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
-    </div>
-    <div>
-        <p>{$datosComp->nombre}</p>
-        <h1>{$datosComp->sistOperativo}</h1>
-        {if $datosComp->id_marca == 1}
-            <h3><b>TCL</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 2}
-            <h3><b>HP</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 3}
-            <h3><b>Lenovo</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 4}
-            <h3><b>APPLE</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 5}
-            <h3><b>EXO</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 6}
-            <h3><b>LG</b></h3>
-        {/if}
-        {if $datosComp->id_marca == 7}
-            <h3><b>Intel</b></h3>
-        {/if}
-    </div>
-</div>
-        
+    <table class='table table-hover table-striped table-bordered table table-condensed' style='width:900px'>
+        {foreach $datosComp item= computadora}
+            <tr>
+                <td>marca : {strtoupper($datosComp[0]->id_marca_fk)} </td>
+                <td>computadora : {strtoupper($datosComp[0]->nombre)} </td>
+                <td>sistema operativo: <b>{strtoupper($datosComp[0]->sistOperativo)}</b> </td>
+            </tr>
+        {/foreach}
+    </table>
  
 {include 'templates/footer.tpl'}

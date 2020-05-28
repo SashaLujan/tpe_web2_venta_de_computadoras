@@ -1,15 +1,13 @@
 {include 'templates/headerAdmin.tpl'}
-    <form action="guardarMarca" method="POST">
-        <h1>Datos de la marca nueva</h1>
-        <label>Nombre de la marca</label>
-        <input type="text" name="nombreMarca">
-        <button type="submit" class="btn btn-danger btn-volver"><b>Enviar</b></button>
-        <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>;
-        {if $error}
-            <div class="alert alert-danger">
-                {$error}
+    <div class="container">
+        <h1>Inserte una marca</h1>
+        <form action="agregarMarca" method="post" class="my-4">
+            <div class="form-group">
+                <label>nombre</label>
+                    <input name="nombreMarca" type="text" class="form-control">
             </div>
-        {/if}
-    </form>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
     
 {include 'templates/footer.tpl'}
