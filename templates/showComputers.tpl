@@ -19,9 +19,8 @@
         <div class="detalle">
             <div class="centrar">
                 <div class="alto">
-                    <b class="nombre">{$computadora>nombre}</b>
+                    <b class="nombre">{$computadora->nombre}</b>
                 </div>
-                <img class="imagen" src="{$computadora->imagen}">
             </div>
             <div class="centrar sistOperativo">
                 <h5><b>{$computadora->sistOperativo}</b></h5>
