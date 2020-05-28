@@ -11,7 +11,7 @@ class LoginController{
 
     public function __construct()
     {
-        $this->modelLogin = new AdminModel();
+        $this->modelLogin = new LoginModel();
         $this->viewAdmin = new AdminView();
         $this->viewPublic =new PublicView();
     }
@@ -26,14 +26,12 @@ class LoginController{
             $password = $_POST['psw'];
             $user = $this->modelLogin->getAdmin($username);
             if($user){
-                if(password_verify($password,$user->contraseñaa)){
+                if(password_verify($password,$username->contraseñaa)){
                     session_start(); //abro la sesion
                     $_SESSION['IS_LOGGED'] = true;
-                    $_SESSION['nombreUsuario'] = $user->nombre; //guardo el nombre de usuario
-                    $this->viewAdmin->welcome($user->nombre);
+                    $_SESSION['nombreUsuario'] = $username->nombre; //guardo el nombre de usuario
+                    $this->viewAdmin->welcome($username->nombre);
                 } else {
-                    var_dump($accion);
-                    die;
                     $this->viewPublic->showHome(false, "contraseña incorrecta");
                 }
             }
@@ -47,6 +45,6 @@ class LoginController{
         public function logout(){
             session_start();
             session_destroy();
-            header('Location:' .BASE_URL 'home');
+            header('Location: home');
         }
     }
