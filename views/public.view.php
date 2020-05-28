@@ -50,8 +50,8 @@ class PublicView{
         $this->smarty->display('templates/showMarks.tpl');
     }    
 
-    public function ComputersByMark($computadoraPorMarca, $admin, $error = null) {
-       $this->smarty->assign('computadoraPorMarca', $computadoraPorMarca);
+    public function ComputersByMark($computadora, $admin, $error = null) {
+       $this->smarty->assign('computadoraPorMarca', $computadora);
        $this->smarty->assign('isAdmin', $admin);
        $this->smarty->assign('error', $error);
        $this->smarty->display('templates/computersByMark.tpl');

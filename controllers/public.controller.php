@@ -62,8 +62,8 @@ class PublicController{
 
     //muestro las computadoras de una marca en particular
     public function showComputerByMark($marca){
-        $computadoraPorMarca = $this->modelComputers->getComputerMarks($marca);
-        $this->viewPublic->computersByMark($computadoraPorMarca, $this->isAdmin);
+        $computadora = $this->modelComputers->getComputerMarks($marca);
+        $this->viewPublic->computersByMark($computadora, $this->isAdmin);
     }
 
     public function showError($msg){
