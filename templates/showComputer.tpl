@@ -4,7 +4,6 @@
             <tr>
                 <td>marca : {strtoupper($datosComp[0]->id_marca_fk)}</td>
                 <td>computadora : {strtoupper($datosComp[0]->nombre)}</td>
-                <td>marca: <b>{strtoupper($datosComp[0]->marca)}</b> </td>
                 <td>sistema operativo: <b>{strtoupper($datosComp[0]->sistOperativo)}</b> </td>
             </tr>
         {/foreach}
