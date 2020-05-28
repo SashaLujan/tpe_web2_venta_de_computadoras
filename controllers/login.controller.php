@@ -28,7 +28,7 @@ class LoginController{
             $password = $_POST['psw'];
             $user = $this->modelLogin->getAdmin($username);
             if($user){
-                if(password_verify($password,$user->contraseña)){
+                if(password_verify($password,$user->contrasenia)){
                     session_start(); //abro la sesion
                     $_SESSION['IS_LOGGED'] = true;
                     $_SESSION['nombreUsuario'] = $user->nombre; //guardo el nombre de usuario
