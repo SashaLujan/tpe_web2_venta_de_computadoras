@@ -24,7 +24,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="listaComputadora">COMPUTADORAS</a>
+                            <a class="nav-link" href="listaComp">COMPUTADORAS</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="listaMarca">MARCAS</a>

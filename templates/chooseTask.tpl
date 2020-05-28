@@ -1,4 +1,4 @@
-{include 'header.admin.tpl'}
+{include 'headerAdmin.tpl'}
     <div>
         <b class="navbar-brand">Seleccione una opcion.</b>
         <form action="computadoras" method="POST">

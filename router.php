@@ -135,7 +135,7 @@ switch($parametros[0]){
     }
     default: {
         $controller = new PublicController();     
-        $controller->showError("Se ha producido un error, vuelva a intentarlo","images/");
+        $controller->showError("Se ha producido un error, vuelva a intentarlo","imagenes/logo.jpeg");
     }    
 }
     

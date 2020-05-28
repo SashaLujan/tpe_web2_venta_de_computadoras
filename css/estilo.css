@@ -1,0 +1,142 @@
+body{
+    background-image: url(fondo.jpg);
+    background-size: 100vw 100vh;
+    background-attachment: fixed; /*para que la imagen quede fija en el scroll*/
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 10px;
+    width: 100%;
+    
+}
+.sistOperativo{
+    color: rgb(3, 3, 26);
+    background-color: whitesmoke;
+    
+}
+.centrar{
+    display:block;
+    margin:auto;
+    text-align: center;
+}
+.imagen{
+    display:block;
+    margin:auto;
+    width: 110px;
+    height: 150px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+.nombre{
+    font-family: aharoni;
+    font-size: 1.2em;
+    text-align: center;
+}
+.contenedor{
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap:1em;
+    margin: 20px;
+}
+.tituloVerComp, .contenedor_welcome{
+    font-size: 1.7em;
+    text-align: center;
+    background-color: rgba(38, 37, 41, 0.5);
+    color: whitesmoke;
+    font-weight: bold;
+    margin-top: 15px;
+
+}
+#detalle{
+    font-size: 3em;
+    font-weight: bolder;
+    background-color: rgba(20, 20, 20, 0.5);   
+    color: aliceblue; 
+    padding-left: 10px;
+}
+.ancho{
+    width: max-content;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.btn_alta{
+    margin-top: 15px;
+}
+#addComp{
+    width: 300px;
+    height: 45px;
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+.contenedor_marca{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap:1em;
+    margin: 15px;
+
+}
+#addMarca{
+    width: 300px;
+    height: 45px;
+    text-align: left;
+    margin-left: 50px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+#editComputer input{
+    width: 300px;
+    height: 45px;
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+.fila_form_edit_comp{
+    text-align: right;
+    margin-right: 30px;
+}
+.computer{
+    width: 150px;
+    padding-bottom: 15px;
+    background-color: rgb(213, 241, 213, 0.2);
+    border-radius: 15px;
+}
+.datosComp{
+    width: 600px;
+    height: 650px;
+    margin-left: 40px;
+    background-color: rgb(250, 247, 235, 0.4);
+    padding: 10px;
+    border-radius: 15px;
+}
+.dato{
+    
+    display:flex;
+	flex-flow:row wrap;
+    margin-top: 40px;
+    margin-left: 40px;
+    height: auto;
+}
+td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.3em;
+    
+}
+.thMarca{
+    display: block;
+}
+th {
+    background: rgba(192, 186, 186, 0.3);
+    color: rgb(255, 255, 255);
+    font-size: 1.3em;
+}

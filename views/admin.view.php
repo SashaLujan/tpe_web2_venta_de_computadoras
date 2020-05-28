@@ -23,12 +23,12 @@ class AdminView{
     //
     public function showComputers($computadoras) {
         $this->smarty->assign('listaComp', $computadoras);
-        $this->smarty->display('templates/showComputers.tpl');
+        $this->smarty->display('templates/showComputersAdmin.tpl');
     }
 
     public function showMarks($marcas) {
         $this->smarty->assign('listaMarca', $marcas);
-        $this->smarty->display('templates/showMarks.tpl');
+        $this->smarty->display('templates/showMarksAdmin.tpl');
     }    
 
     public function formComputerAdd($marcas, $error = null) {
