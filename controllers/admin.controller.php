@@ -22,12 +22,7 @@ class AdminController{
         $this->viewAdmin = new AdminView();
         $this->viewPublic = new PublicView();
     }
-
-    //le muestra un form al admin si quiere hacer un ABM en computadoras o marcas
-    public function showOption(){
-        $this->viewAdmin->chooseTask();
-    }
-
+    
     //muestra las computadoras para poder hacer ABM
     public function computers(){
         //pido las computadoras al modelo
@@ -44,7 +39,7 @@ class AdminController{
         $this->viewAdmin->showMarks($marcas);
     }
 
-    //muestra una form para poder cargar una compu nueva
+    //muestra una form para poder cargar una computadora nueva
     public function formComputer(){
         $marcas = $this->modelMarks->getAll();
         $this->viewAdmin->formComputerAdd($marcas);
