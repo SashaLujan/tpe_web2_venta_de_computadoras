@@ -4,20 +4,19 @@
 {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
     {include 'header.tpl'}
 {/if}
-<div class="tituloVerComp">
+<div>
     <p><b>Computadoras</b></p>
 </div>
-<div class="datosComp">
+<div>
     <div>
-        <img class="imagen"src="{$datosComp->imagen}">
         {if {$isAdmin}} {* SI ES ADMINISTRADOR*}
-            <h4><a class="btn btn-danger centrar btn_alta" href="editarComp/{$datosComp->id_computadora}"><b>Editar</b></a></h4>
-            <h4><a class="btn btn-danger centrar btn_alta" href="eliminarComp/{$datosComp->id_computadora}"><b>Baja</b></a></h4>
+            <h4><a class="btn btn-danger centrar" href="editarComp/{$datosComp->id_computadora}"><b>Editar</b></a></h4>
+            <h4><a class="btn btn-danger centrar" href="eliminarComp/{$datosComp->id_computadora}"><b>Baja</b></a></h4>
         {/if}
-        <h4><a class="btn btn-danger centrar btn_alta" href="listaComp"><b>Volver</b></a>;
+        <h4><a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
     </div>
-    <div class="datosComp">
-        <p id="detalle">{$datosComp->nombre}</p>
+    <div>
+        <p>{$datosComp->nombre}</p>
         <h1>{$datosComp->sistOperativo}</h1>
         {if $datosComp->id_marca == 1}
             <h3><b>TCL</b></h3>

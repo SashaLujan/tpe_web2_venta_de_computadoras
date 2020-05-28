@@ -9,14 +9,14 @@
         <button type="submit"><b>Alta</b></button>
     </form>      
 
-    <div class="contenedor_marca">
-        <table class="table">
+    <di>
+        <table>
             <caption>Lista de Marcas</caption>
             <thead>
                 <tr>
-                    <th class="thMarca">nombre</th>
-                    <th class="thMarca">editar</th>
-                    <th class="thMarca">eliminar</th>
+                    <th>nombre</th>
+                    <th>editar</th>
+                    <th>eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,5 +36,5 @@
             </tbody>
         </table>
     </div>
-    <a class="nav-link" href="elegirOpcion"><b>Volver</b></a>;
+    <a class="nav-link" href="listaMarca"><b>Volver</b></a>;
 {include 'templates/footer.tpl'}

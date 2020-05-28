@@ -6,7 +6,7 @@
         <label>nombre</label>
         <input type="text" name="nombreMarca" value="{$marca->nombre}">
         <button type="submit" class="btn btn-danger btn-volver"><b>Enviar</b></button>
-        <a class="btn btn-danger btn-volver" href="listaMarca"><b>Volver</b></a>;
+        <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>;
         {if $error}
             <div class="alert alert-danger">
                 {$error}

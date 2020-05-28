@@ -1,5 +1,5 @@
 {include 'headerAdmin.tpl'}
-    <form id="addComp" action="guardarComp" method="POST">
+    <form action="guardarComp" method="POST">
         <h1>Datos de la computadora nueva</h1>
         <label>Nombre de la computadora</label> 
         <input type="text" name="nombreComp">
@@ -16,7 +16,7 @@
         <label>Ingrese una foto</label> 
         <input type="text" name="foto">
         <button type="submit" class="btn btn-danger"><b>Enviar</b></button>
-        <a class="btn btn-danger btn-volver" href="listaComp"><b>Volver</b></a>;
+        <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
         {if {$error}}
             <div class="alert alert-danger">
                 {$error}

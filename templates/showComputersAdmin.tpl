@@ -6,7 +6,7 @@
     </div>
     <div>
         <form action="agregarComp" method="POST">
-            <label><b>Dar Alta a un Jugador</b></label>
+            <label><b>Dar Alta</b></label>
             <button type="submit"><b>Alta</b></button>
         </form>
         <b class="navbar-brand">Para Editar o dar Baja a un Jugador deberá conocer su DNI</b>
@@ -22,5 +22,5 @@
             <button type="submit"><b>Baja</b></button>
         </form>
     </div>
-    <a class="nav-link" href="elegirOpcion"><b>Volver</b></a>;
+    <a class="nav-link" href="listaComp"><b>Volver</b></a>;
 {include 'templates/footer.tpl'}
