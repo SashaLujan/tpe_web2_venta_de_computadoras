@@ -3,24 +3,23 @@
 require_once 'models/marks.model.php';
 require_once 'models/computers.model.php';
 require_once 'views/public.view.php';
-require_once 'helpers/auth.helper.php';
+//require_once 'helpers/auth.helper.php';
 
 class PublicController{
     private $modelComputers;
     private $modelMarks;
     private $viewPublic;
-    private $isAdmin;
+    //private $isAdmin;
 
     public function __construct()
     {
         $this->modelComputers = new ComputersModel();
         $this->modelMarks = new MarksModel();
         $this->viewPublic = new PublicView();
-        $this->isAdmin = authHelper::userLogged();
     }
 
     public function home(){
-        $this->viewPublic->showHome($this->isAdmin);
+        $this->viewPublic->showHome();
     }
 
     //muestra todas las computadoras de la db
@@ -28,7 +27,7 @@ class PublicController{
         //pido las computadoras al modelo
         $computadoras = $this->modelComputers->getAll();
         //actualizo la vista
-        $this->viewPublic->showComputers($computadoras, $this->isAdmin);
+        $this->viewPublic->showComputers($computadoras);
     }
 
     //muestra una sola computadora
@@ -39,17 +38,17 @@ class PublicController{
         if(!empty($computadora)){
             $this->viewPublic->showComputer($computadora, $computadoras, $this->isAdmin);
         } else
-            $this->viewPublic->showError("La computadora no existe");
+            $this->viewPublic->showError($msg);
     }
 
-    public function viewComputerMark($id_computadora,$marca){
-        $computadoraPorMarca = $this->modelComputers->getComputerMarks($marca);
+    //muestra los datos de una computadora
+    public function viewComputerMark($id_computadora){
         $computadora = $this->modelComputers->get($id_computadora);
 
         if(!empty($computadora)){
-            $this->viewPublic->showComputerMark($computadora, $computadoraPorMarca, $this->isAdmin);
+            $this->viewPublic->showComputerMark($computadora);
         } else
-            $this->viewPublic->showError("La computadora no existe");
+            $this->viewPublic->showError($msg);
     }
 
     //muestra todas las marcas de la db
@@ -57,15 +56,21 @@ class PublicController{
         //pido las marcas al modelo
         $marcas = $this->modelMarks->getAll();
         //actualizo la vista
-        $this->viewPublic->showMarks($marcas, $this->isAdmin);
+        $this->viewPublic->showMarks($marcas);
     }
 
     //muestro las computadoras de una marca en particular
     public function showComputerByMark($marca){
-        $computadora = $this->modelComputers->getComputerMarks($marca);
-        $this->viewPublic->computersByMark($computadora, $this->isAdmin);
+        $computadoraPorMarca = $this->modelComputers->getComputerMarks($marca);
+        if(empty($computadoraPorMarca)){
+            $this->viewPublic->showError($msj);
+        }
+        else {
+            $this->viewPublic->computersByMark($computadoraPorMarca);
+        }
     }
 
+    //muestra un error en pantalla
     public function showError($msg){
         $this->viewPublic->showError($msg);
     }

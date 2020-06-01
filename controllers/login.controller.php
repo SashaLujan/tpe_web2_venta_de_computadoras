@@ -19,32 +19,34 @@ class LoginController{
     //verifica que el usuario ingresado sea correcto
     public function loginAdmin(){
         if(empty($_POST['username'])|| empty($_POST['contraseña'])){
-            $this->viewPublic->showHome(false,"Completar todos los campos");
+            $this->viewPublic->showHome("Completar todos los campos", session_status() === PHP_SESSION_ACTIVE);
         }
         else {
             $username = $_POST['username'];
             $password = $_POST['contraseña'];
             $user = $this->modelLogin->getAdmin($username);
             if($user){
-                if(password_verify($password,$username->contraseña)){
-                    session_start(); //abro la sesion
+                if(password_verify($password,$user->contraseña)){
+                    if(session_status()!= PHP_SESSION_ACTIVE){
+                        session_start(); //abro la sesion
+                    }
                     $_SESSION['IS_LOGGED'] = true;
-                    $_SESSION['nombre_suario'] = $username->nombre; //guardo el nombre de usuario
-                    $this->viewAdmin->welcome($username->nombre);
+                    $_SESSION['nombre_suario'] = $user->nombre; //guardo el nombre de usuario
+                    header('Location: ' .BASE_URL. 'loguearse');
                 } else {
-                    $this->viewPublic->showHome(false, "contraseña incorrecta");
+                    $this->viewPublic->showHome("contraseña incorrecta", session_status() === PHP_SESSION_ACTIVE);
                 }
             }
             else{
-                $this->viewPublic->showHome(false, "El usuario no exise");
+                $this->viewPublic->showHome("El usuario no exise", session_status() === PHP_SESSION_ACTIVE);
             }
         }
     }
     
-        //cierra la sesion que esta abierta y redirige al home
-        public function logout(){
-            session_start();
-            session_destroy();
-            header('Location: home');
-        }
+    //cierra la sesion que esta abierta y redirige al home
+    public function logout(){
+        session_start();
+        session_destroy();
+        header('Location:' .BASE_URL. 'home');
     }
+}
