@@ -80,7 +80,7 @@ switch ($parametros[0]) {
                 $controller = new AdminController();
                 $controller->modifyMark();
                 break;
-        case 'eliminarMMarca':
+        case 'eliminarMarca':
                 $controller = new AdminController();
                 $controller->deleteMark($parametros[1]);
                 break;

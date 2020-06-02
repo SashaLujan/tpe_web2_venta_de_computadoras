@@ -1,8 +1,8 @@
-{include 'header.tpl'}
+{if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
+    {include 'headeradmin.tpl'}
+{/if}
 {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
-    <div>
-        <p><b>MARCAS</b></p>
-    </div>
+    {include 'header.tpl'}
 {/if}
 {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
     <div>
@@ -17,17 +17,16 @@
             </div>
             {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
                 <div>
-                    <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadora</b></a>
+                    <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
                 </div>          
             {/if}
             {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
                 <div>
                     <a class="btn btn-danger" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
                     <a class="btn btn-danger" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
-                </div>          
+                </div>
             {/if}
-
-        </div>    
-    {/foreach}   
+        </div>
+    {/foreach}
 </div>
 {include 'templates/footer.tpl'}

@@ -1,5 +1,10 @@
-{include 'header.tpl'}
-{if $isAdmin} 
+{if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
+    {include 'header.admin.tpl'}
+{/if}
+{if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
+    {include 'header.tpl'}
+{/if}
+{if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
     <table class='table table-hover table-striped table-bordered table table-condensed' style='width:900px'>
         <tr>
             <th scope='col'><h2> computadoras disponibles</h2></th>
@@ -23,7 +28,7 @@
             <td> <b> {strtoupper($computadora->id_marca_fk)}</b> </td>
                 <td> <b>{$computadora->sistOperativo}</b> </td>
                 <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
-                {if $isAdmin} 
+                {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
                     <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
                     <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
                 {/if}

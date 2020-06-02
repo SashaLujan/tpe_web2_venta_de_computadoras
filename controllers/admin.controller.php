@@ -1,26 +1,26 @@
 <?php
 require_once 'models/computers.model.php';
 require_once 'models/marks.model.php';
-//require_once 'models/admin.model.php';
+require_once 'models/login.model.php';
 require_once 'views/public.view.php';
 require_once 'views/admin.view.php';
-//require_once 'helpers/auth.helper.php';
+require_once 'helpers/auth.helper.php';
 
 class AdminController
 {
     //variables globales
     private $modelComputers;
     private $modelMarks;
-    //private $modelAdmin;
+    private $modelLogin;
     private $viewAdmin;
     private $viewPublic;
 
     public function __construct()
     {
-        // authHelper::checkLogged();
+        authHelper::checkLogged();
         $this->modelComputers = new ComputersModel();
         $this->modelMarks = new MarksModel();
-        //$this->modelAdmin = new AdminModel();
+        $this->modelLogin = new LoginModel();
         $this->viewAdmin = new AdminView();
         $this->viewPublic = new PublicView();
     }

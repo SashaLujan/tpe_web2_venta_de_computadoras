@@ -1,14 +1,15 @@
-{include 'templates/header.tpl'}
+{include 'templates/headerAdmin.tpl'}
     
     <div class="container">  
-        <h1>Edite la marca {$item[0]->nombre}</h1>
-        <form action="guardarEditMarca/{$item[0]->nombre}" method="post" class="my-4">
-        <div class="form-group">
-                    <input name="marca" type="hidden" value={$item[0]->id_marca} class="form-control">
-                            <label>nombre</label>
-                    <input name="nombreMarca" type="text" value={$item[0]->nombre} class="form-control">
+        <h1>Edite la marca</h1>
+        <form action="guardarEditMarca" method="POST" class="my-4">
+            <div class="form-group">
+                <input name="marca" type="hidden" value={$marca->id_marca} class="form-control">
+                <label>nombre</label>
+                <input name="nombreMarca" type="text" value={$marca->nombre} class="form-control">
             </div>
-            <button type="submit" class="btn btn-danger">Editar</button>
+            <button type="submit" class="btn btn-danger">Guardar</button>
+            <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>
         </form>
     </div>
 

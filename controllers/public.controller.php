@@ -3,14 +3,14 @@
 require_once 'models/marks.model.php';
 require_once 'models/computers.model.php';
 require_once 'views/public.view.php';
-//require_once 'helpers/auth.helper.php';
+require_once 'helpers/auth.helper.php';
 
 class PublicController
 {
     private $modelComputers;
     private $modelMarks;
     private $viewPublic;
-    //private $isAdmin;
+    private $isAdmin;
 
     public function __construct()
     {

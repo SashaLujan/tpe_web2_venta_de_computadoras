@@ -9,10 +9,10 @@ class PublicView
     public function __construct()
     {
         $this->smarty = new Smarty();
-        //$admin = AuthHelper::userLogged();
-        //$this->smarty->assign('isAdmin', $admin);
-        //$nameAdmin = AuthHelper::nameLogged();
-        //$this->smarty->assign('nameAdmin', $nameAdmin);
+        $admin = AuthHelper::userLogged();
+        $this->smarty->assign('isAdmin', $admin);
+        $nameAdmin = AuthHelper::nameLogged();
+        $this->smarty->assign('nameAdmin', $nameAdmin);
     }
 
     public function showHome($error = null)
@@ -60,9 +60,9 @@ class PublicView
     }
 
     //muetra todas las computadoras de una marca
-    public function ComputersByMark($computadora, $error = null)
+    public function ComputersByMark($computadoraPorMarca, $error = null)
     {
-        $this->smarty->assign('computadoraPorMarca', $computadora);
+        $this->smarty->assign('computadoraPorMarca', $computadoraPorMarca);
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/computersByMark.tpl');
     }

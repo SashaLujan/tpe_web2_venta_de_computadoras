@@ -1,14 +1,14 @@
-{include 'header.tpl'}
+{include 'headerAdmin.tpl'}
     <div class="container">
         <h1>Inserte una computadora</h1>
         <form action="agregarComp" method="post" class="my-4">
             <div class="form-group">
                 <label>nombre</label>
-                    <input name="nombre" type="text" class="form-control">
+                <input name="nombre" type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label>marca</label>
-                    <input name="marca" type="text" class="form-control">
+                <input name="marca" type="text" class="form-control">
             </div>
             <div class="form-group">
                 <label>sistema operativo</label>
@@ -22,9 +22,8 @@
                 {/foreach}
             </select>
             </div>
-
             <button type="submit" class="btn btn-danger">Guardar</button>
         </form>
- </div>      
+    </div>
 
 {include 'templates/footer.tpl'}

@@ -31,16 +31,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="login-container">
-                    <form action="loguearse" method="POST">
-                        {if !$isAdmin}
-                        <input type="text" placeholder="username" name="username">
-                        <input type="password" placeholder="Password" name="contraseña">
-                        <button type="submit">Login</button>
-                        {/if}
-                        {if $isAdmin}
-                        <a class="navbar-brand" href='cerrar_sesion'><p class="">Usuario: {$administrador}</p>  Logout </a>
-                        {/if}
-                    </form>
+                <div>
+                    <a class="navbar-brand btn btn-danger" href="cerrar_sesion">Usuario: {$nameAdmin} | <b>Cerrar Sesión</b></a>
                 </div>
             </nav>
