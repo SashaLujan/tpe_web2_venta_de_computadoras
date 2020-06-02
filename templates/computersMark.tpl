@@ -33,7 +33,7 @@
             <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
             <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
         {/if}
-        <a class="btn btn-danger" href="listaMarca/{$computadora->id_marca}"><b>Volver</b></a>;
+        <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>;
         <div>
             <p>{$computadora->nombre}</p>
             {if {$computadora->id_marca} == 1}

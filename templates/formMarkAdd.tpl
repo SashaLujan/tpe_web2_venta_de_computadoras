@@ -7,6 +7,7 @@
                     <input name="nombreMarca" type="text" class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>;
         </form>
     </div>
     

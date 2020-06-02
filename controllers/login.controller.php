@@ -32,7 +32,7 @@ class LoginController
                         session_start(); //abro la sesion
                     }
                     $_SESSION['IS_LOGGED'] = true;
-                    $_SESSION['nombre_suario'] = $user->nombre; //guardo el nombre de usuario
+                    $_SESSION['nombre_usuario'] = $user->nombre; //guardo el nombre de usuario
                     header('Location: ' . BASE_URL . 'loguearse');
                 } else {
                     $this->viewPublic->showHome("contraseña incorrecta", session_status() === PHP_SESSION_ACTIVE);

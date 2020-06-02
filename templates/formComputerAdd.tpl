@@ -23,6 +23,7 @@
             </select>
             </div>
             <button type="submit" class="btn btn-danger">Guardar</button>
+            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
         </form>
     </div>
 
