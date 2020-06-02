@@ -12,7 +12,7 @@
                 <input name="marca" type="hidden" value={$computadora->id_marca} class="form-control">
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
+            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
         </form>
         </div>
 

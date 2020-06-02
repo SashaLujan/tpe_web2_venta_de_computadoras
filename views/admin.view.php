@@ -29,7 +29,7 @@ class AdminView
         $this->smarty->display('templates/formMarkAdd.tpl');
     }
 
-    //muetra un formulario para editar una computadora
+    //muestra un formulario para editar una computadora
     public function showFormEditComputer($computadora, $marca, $error = null)
     {
         $this->smarty->assign('computadora', $computadora);

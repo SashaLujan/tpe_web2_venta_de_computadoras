@@ -13,5 +13,5 @@
             </tr>
         {/foreach}
     </table>
- 
+    <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
 {include 'templates/footer.tpl'}
