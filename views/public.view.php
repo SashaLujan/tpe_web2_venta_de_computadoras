@@ -9,9 +9,9 @@ class PublicView
     public function __construct()
     {
         $this->smarty = new Smarty();
-        $admin = AuthHelper::userLogged();
+        $admin = authHelper::userLogged();
         $this->smarty->assign('isAdmin', $admin);
-        $nameAdmin = AuthHelper::nameLogged();
+        $nameAdmin = authHelper::nameLogged();
         $this->smarty->assign('nameAdmin', $nameAdmin);
     }
 

@@ -1,5 +1,5 @@
 {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
-    {include 'header.admin.tpl'}
+    {include 'headerAdmin.tpl'}
 {/if}
 {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
     {include 'header.tpl'}
