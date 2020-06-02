@@ -1,5 +1,6 @@
 <?php
-class LoginModel{
+class LoginModel
+{
     private function createConection()
     {
         $host = 'localhost';
@@ -18,7 +19,7 @@ class LoginModel{
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("SELECT * FROM administradores WHERE nombre_usuario = ?"); // prepara la consulta
         $sentencia->execute([$username]); // ejecuta
-        $administrador = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        $administrador = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $administrador;
     }
 }

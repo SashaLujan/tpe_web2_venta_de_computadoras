@@ -48,22 +48,22 @@ class ComputersModel
         return $computadorapormarca;
     }
 
-    public function insert($computadora, $nombre, $sistOperativo, $id_marca_fk)
+    public function insert($id_computadora, $nombre, $sistOperativo, $id_marca_fk)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
         $sentencia = $db->prepare("INSERT INTO computadora(id_computadora, nombre, marca, sistOperativo, id_marca_fk) VALUES(?, ?, ?, ?, ?)"); // prepara la consulta
-        return $sentencia->execute([$computadora, $nombre, $sistOperativo, $id_marca_fk]); // ejecuta
+        return $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $id_marca_fk]); // ejecuta
     }
 
-    public function update($marca, $nombre, $sistOperativo, $id_marca_fk)
+    public function update($id_computadora, $nombre, $sistOperativo, $id_marca_fk)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("UPDATE computadora SET  nombre=? , marca=? , sistOperativo=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
-        $sentencia->execute([$nombre, $marca, $sistOperativo, $id_marca_fk]); // ejecuta
+        $sentencia->execute([$nombre, $id_computadora, $sistOperativo, $id_marca_fk]); // ejecuta
     }
 
     public function delete($id_computadora)

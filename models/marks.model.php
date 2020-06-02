@@ -1,6 +1,7 @@
 <?php
 
-class MarksModel{
+class MarksModel
+{
 
     private function createConection()
     {
@@ -25,7 +26,8 @@ class MarksModel{
     }
 
     //muestra la marca que el usuario paso por parametro
-    public function get($id_marca){
+    public function get($id_marca)
+    {
         $db = $this->createConection(); // 1. abro la conexión con MySQL 
         //Creamos la consulta para obtener una categoria
         $sentencia = $db->prepare("SELECT * FROM marca  WHERE id_marca=?"); // prepara la consulta
@@ -34,22 +36,22 @@ class MarksModel{
         return $marca;
     }
 
-    public function insert($marca,$nombre)
+    public function insert($marca, $nombre)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
         $sentencia = $db->prepare("INSERT INTO marca(id_marca, nombre) VALUES(?)"); // prepara la consulta
-        return $sentencia->execute([$marca,$nombre]); // ejecuta
+        return $sentencia->execute([$marca, $nombre]); // ejecuta
     }
 
-    public function update($marca,$nombre)
+    public function update($marca, $nombre)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("UPDATE marca SET nombre=? WHERE id_marca=?"); // prepara la consulta
-        $sentencia->execute([$marca,$nombre]); // ejecuta
+        $sentencia->execute([$marca, $nombre]); // ejecuta
     }
 
     public function delete($id_marca)
