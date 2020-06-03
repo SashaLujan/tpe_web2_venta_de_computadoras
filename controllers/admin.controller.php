@@ -33,17 +33,38 @@ class AdminController
     }
 
     public function addComputer()
+    /*{
+        $id_computadora= $_POST['idcomputadora'];
+        $nombre= $_POST['nombre'];         
+        $sistOperativo = $_POST['sistOperativo'];          //Compruebo que no se suban autores existentes       
+        $marca = $_POST['marca'];
+        $id_marca_fk= $_POST['idmarca'];
+        $computadoras= $this->modelComputers->getAll();         
+        foreach ($computadoras as $computadora){             
+            if ($computadora->nombre == $nombre){                 
+                $this->viewAdmin->showError("la computadora ya existe");                
+                die();             
+            }        
+        }         
+        if (!empty($id_computadora)&& !empty($nombre)&& !empty($sistOperativo)&& !empty($marca)&&!empty($id_marca_fk)){          
+            $this->modelComputers->insert($id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk);             
+            $this->viewAdmin->formComputerAdd($nombre);
+        }
+        else {             
+            $this->viewAdmin->showError("Faltan campos por completar para crear nuevo autor");         
+        }
+    }*/
     {
-        if (empty($_POST['computadora']) || empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
+        if (empty($_POST['id_computadora']) || empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'] || empty($_POST['id_marca_fk']) )) {
             $marcas = $this->modelMarks->getAll();
             $this->viewAdmin->formComputerAdd($marcas, "No ingreso todos los datos obligatorios");
         } else {
-            $computadora = $this->modelComputers->get($_POST['computadora']);
+            $computadora = $this->modelComputers->get($_POST['nombre']);
             if (!empty($computadora)) {
                 $marcas = $this->modelMarks->getAll();
                 $this->viewAdmin->formComputerAdd($marcas, "La computadora" . $_POST['nombre'] . "ya existe");
             } else {
-                $this->modelComputers->insert($_POST['computadora'], $_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['imagen']);
+                $this->modelComputers->insert($_POST['id_computadora'], $_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['id_marca_fk']);
                 $marcas = $this->modelMarks->getAll();
                 $this->viewAdmin->formComputerAdd($marcas, "La computadora fue guardada correctamente");
             }

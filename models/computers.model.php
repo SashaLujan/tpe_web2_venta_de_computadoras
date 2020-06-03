@@ -8,6 +8,7 @@ class ComputersModel
         $password = '';
         $database = 'computadora';
         $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $pdo;
     }
 
@@ -53,8 +54,8 @@ class ComputersModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
-        $sentencia = $db->prepare("INSERT INTO computadora(id_computadora, nombre, marca, sistOperativo, id_marca_fk) VALUES(?, ?, ?, ?, ?)"); // prepara la consulta
-        return $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
+        $sentencia = $db->prepare("INSERT INTO computadora(id_computadora, nombre, sistOperativo, marca, id_marca_fk) VALUES(?, ?, ?, ?, ?)"); // prepara la consulta
+        $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
     }
 
     public function update($id_computadora, $nombre, $sistOperativo,$marca, $id_marca_fk)
