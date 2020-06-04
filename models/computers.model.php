@@ -40,7 +40,7 @@ class ComputersModel
     {
         $db = $this->createConection(); // 1. abro la conexión con MySQL 
         //Creamos la consulta para obtener una categoria
-        $sentencia = $db->prepare("SELECT computadora, id_computadora, nombre, sistOperativo, marca
+        $sentencia = $db->prepare("SELECT computadora, id_computadora, nombre_comp, sistOperativo, nombre_marca
         FROM computadora 
         INNER JOIN marca ON computadora.id_marca = marca.id_marca
         WHERE marca.id_marca=$id_marca ORDER BY computadora"); // prepara la consulta
@@ -49,13 +49,13 @@ class ComputersModel
         return $computadorapormarca;
     }
 
-    public function insert($id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk)
+    public function insert($nombre, $sistOperativo, $marca)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
-        $sentencia = $db->prepare("INSERT INTO computadora(id_computadora, nombre, sistOperativo, marca, id_marca_fk) VALUES(?, ?, ?, ?, ?)"); // prepara la consulta
-        $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
+        $sentencia = $db->prepare("INSERT INTO computadora(nombre_comp, sistOperativo, nombre_marca) VALUES(?, ?, ?)"); // prepara la consulta
+        return $sentencia->execute([$nombre, $sistOperativo, $marca]); // ejecuta
     }
 
     public function update($id_computadora, $nombre, $sistOperativo,$marca, $id_marca_fk)
@@ -63,7 +63,7 @@ class ComputersModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("UPDATE computadora SET  nombre=? , sistOperativo=? , marca=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
+        $sentencia = $db->prepare("UPDATE computadora SET  nombre_comp=? , sistOperativo=? , nombre_marca=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
         $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
     }
 

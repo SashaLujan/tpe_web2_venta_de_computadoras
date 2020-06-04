@@ -5,28 +5,28 @@
     {include 'header.tpl'}
 {/if}
 {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
-    <div>
+    <table>
         <h4><a class="btn btn-danger" href="agregarMarca"><b>Alta</b></a></h4>
-    </div>
+    </table>
 {/if}
-<div>
+<table>
     {foreach from=$listaMarca item=marca} 
-        <div>
-            <div>
-                <b class="nombre">{$marca->nombre}</b>
-            </div>
+        <tr>
+            <td>
+                <b class="nombre">{$marca->nombre_marca}</b>
+            </td>
             {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
-                <div>
+                <td>
                     <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
-                </div>          
+                </td>          
             {/if}
             {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
-                <div>
+                <td>
                     <a class="btn btn-danger" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
                     <a class="btn btn-danger" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
-                </div>
+                </td>
             {/if}
-        </div>
+        </tr>
     {/foreach}
-</div>
+</table>
 {include 'templates/footer.tpl'}

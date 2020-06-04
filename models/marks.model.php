@@ -36,13 +36,24 @@ class MarksModel
         return $marca;
     }
 
-    public function insert($marca, $nombre)
+    public function getName($name)
+    {
+        // 1. abro la conexión con MySQL 
+        $db = $this->createConection();
+        // 2. enviamos la consulta (3 pasos)
+        $sentencia = $db->prepare("SELECT * FROM marca WHERE nombre_marca=?"); // prepara la consulta
+        $sentencia->execute([$name]); // ejecuta
+        $marca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        return $marca;
+    }
+
+    public function insert($nombre)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
-        $sentencia = $db->prepare("INSERT INTO marca(id_marca, nombre) VALUES(?)"); // prepara la consulta
-        return $sentencia->execute([$marca, $nombre]); // ejecuta
+        $sentencia = $db->prepare("INSERT INTO marca(nombre_marca) VALUES(?)"); // prepara la consulta
+        return $sentencia->execute([$nombre]); // ejecuta
     }
 
     public function update($marca, $nombre)
@@ -50,7 +61,7 @@ class MarksModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("UPDATE marca SET nombre=? WHERE id_marca=?"); // prepara la consulta
+        $sentencia = $db->prepare("UPDATE marca SET nombre_marca=? WHERE id_marca=?"); // prepara la consulta
         $sentencia->execute([$marca, $nombre]); // ejecuta
     }
 

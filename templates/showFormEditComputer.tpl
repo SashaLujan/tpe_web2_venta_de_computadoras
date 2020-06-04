@@ -5,11 +5,11 @@
             <input name="id_computadora" type="hidden" value={$computadora->id_computadora} class="form-control">
             <div class="form-group">
                 <label>nombre</label>
-                <input name="nombre" type="text" value={$computadora->nombre} class="form-control">
+                <input name="nombre" type="text" value={$computadora->nombre_comp} class="form-control">
             </div>
             <div class="form-group">
                 <label>Marca</label>
-                <input name="marca" type="text" value={$computadora->marca} class="form-control">
+                <input name="marca" type="text" value={$computadora->nombre_marca} class="form-control">
             </div>
             <div class="form-group">
                 <label>Sistema Operativo</label>

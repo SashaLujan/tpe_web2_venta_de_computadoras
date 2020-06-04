@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2020 a las 07:57:43
+-- Tiempo de generación: 04-06-2020 a las 17:45:24
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -49,24 +49,24 @@ INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `
 --
 
 CREATE TABLE `computadora` (
-  `id_computadora` int(2) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
+  `id_computadora` int(25) NOT NULL,
+  `nombre_comp` varchar(20) NOT NULL,
   `sistOperativo` varchar(20) NOT NULL,
-  `id_marca_fk` int(2) NOT NULL
+  `nombre_marca` varchar(25) NOT NULL,
+  `id_marca_fk` int(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `computadora`
 --
 
-INSERT INTO `computadora` (`id_computadora`, `nombre`, `sistOperativo`, `id_marca_fk`) VALUES
-(4, 'pc', 'windows 7', 2),
-(5, 'pc', 'windows 10', 3),
-(6, 'Notebook', 'windows 8.1', 4),
-(7, 'pc', 'windows XP', 5),
-(8, 'Notebook', 'windows 10', 6),
-(9, 'pc', 'windows 7', 7),
-(10, 'Notebook', 'Linux', 1);
+INSERT INTO `computadora` (`id_computadora`, `nombre_comp`, `sistOperativo`, `nombre_marca`, `id_marca_fk`) VALUES
+(6, 'Notebook', 'windows 8.1', 'APPLE', 4),
+(7, 'pc', 'windows XP', 'EXO', 5),
+(8, 'Notebook', 'windows 10', 'LG', 6),
+(9, 'pc', 'windows 7', 'Intel', 7),
+(10, 'Notebook', 'Linux', 'TCL', 1),
+(15, 'Notebook', 'windows ', 'HP', 2);
 
 -- --------------------------------------------------------
 
@@ -75,15 +75,15 @@ INSERT INTO `computadora` (`id_computadora`, `nombre`, `sistOperativo`, `id_marc
 --
 
 CREATE TABLE `marca` (
-  `id_marca` int(2) NOT NULL,
-  `nombre` varchar(20) NOT NULL
+  `id_marca` int(25) NOT NULL,
+  `nombre_marca` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `marca`
 --
 
-INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
+INSERT INTO `marca` (`id_marca`, `nombre_marca`) VALUES
 (1, 'TCL'),
 (2, 'HP'),
 (3, 'Lenovo'),
@@ -113,6 +113,7 @@ ALTER TABLE `computadora`
 -- Indices de la tabla `marca`
 --
 ALTER TABLE `marca`
+  ADD PRIMARY KEY (`id_marca`),
   ADD KEY `id_marca` (`id_marca`);
 
 --
@@ -123,7 +124,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `computadora`
 --
 ALTER TABLE `computadora`
-  MODIFY `id_computadora` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_computadora` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas

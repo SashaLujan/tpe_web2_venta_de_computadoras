@@ -24,8 +24,8 @@
         </tr>
         {foreach $listaComp item= computadora}
            <tr>
-             <td> <b> {strtoupper($computadora->nombre)} </b> </td>
-            <td> <b> {strtoupper($computadora->marca)}</b> </td>
+             <td> <b> {strtoupper($computadora->nombre_comp)} </b> </td>
+            <td> <b> {strtoupper($computadora->nombre_marca)}</b> </td>
                 <td> <b>{$computadora->sistOperativo}</b> </td>
                 <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
                 {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}

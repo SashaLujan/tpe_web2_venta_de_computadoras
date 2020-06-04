@@ -6,7 +6,7 @@
             <div class="form-group">
                 <input name="marca" type="hidden" value={$marca->id_marca} class="form-control">
                 <label>nombre</label>
-                <input name="nombreMarca" type="text" value={$marca->nombre} class="form-control">
+                <input name="nombreMarca" type="text" value={$marca->nombre_marca} class="form-control">
             </div>
             <button type="submit" class="btn btn-danger">Guardar</button>
             <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>
