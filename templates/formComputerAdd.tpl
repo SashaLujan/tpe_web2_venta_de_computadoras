@@ -8,7 +8,11 @@
             </div>
             <div class="form-group">
                 <label>marca</label>
-                <input name="marca" type="text" class="form-control">
+                <select name="marca">
+                    {foreach from=$listaMarca item=marcas}
+                        <option value= {$marcas->id_marca}>{$marcas->nombre_marca}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="form-group">
                 <label>sistema operativo</label>

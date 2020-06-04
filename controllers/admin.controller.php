@@ -38,16 +38,11 @@ class AdminController
            // $marcas = $this->modelMarks->getAll();
             $this->viewAdmin->showError("No ingreso todos los datos obligatorios");
         } else {
-            $computadora = $this->modelComputers->get($_POST['nombre']);
-            if (!empty($computadora)) {
-               // $marcas = $this->modelMarks->getAll();
-                $this->viewAdmin->showError("La computadora ya existe");
-            } else {
                 $this->modelComputers->insert($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
                 //$marcas = $this->modelMarks->getAll();
                 //$this->viewAdmin->formComputerAdd("La computadora fue guardada correctamente");
                 header('Location: ' . BASE_URL . 'agregarComp');
-            }
+            
         }
     }
 

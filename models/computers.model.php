@@ -36,15 +36,14 @@ class ComputersModel
     }
 
     //computadoraas de un tipo de marca
-    public function getComputerMarks($id_marca)
+    public function getComputerMarks()
     {
         $db = $this->createConection(); // 1. abro la conexión con MySQL 
         //Creamos la consulta para obtener una categoria
-        $sentencia = $db->prepare("SELECT computadora, id_computadora, nombre_comp, sistOperativo, nombre_marca
+        $sentencia = $db->prepare("SELECT computadora.id_computadora, computadora.nombre_comp, computadora.sistOperativo, marca.nombre_marca
         FROM computadora 
-        INNER JOIN marca ON computadora.id_marca = marca.id_marca
-        WHERE marca.id_marca=$id_marca ORDER BY computadora"); // prepara la consulta
-        $sentencia->execute([$id_marca]); // ejecuta --> LLEGA BIEN SIN FILTRAR POR MARCA
+        INNER JOIN marca ON computadora.id_marca_fk = marca.id_marca"); // prepara la consulta
+        $sentencia->execute(); // ejecuta --> LLEGA BIEN SIN FILTRAR POR MARCA
         $computadorapormarca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
         return $computadorapormarca;
     }
@@ -54,7 +53,7 @@ class ComputersModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
-        $sentencia = $db->prepare("INSERT INTO computadora(nombre_comp, sistOperativo, nombre_marca) VALUES(?, ?, ?)"); // prepara la consulta
+        $sentencia = $db->prepare("INSERT INTO computadora(nombre_comp, sistOperativo, id_marca_fk) VALUES(?, ?, ?)"); // prepara la consulta
         return $sentencia->execute([$nombre, $sistOperativo, $marca]); // ejecuta
     }
 
@@ -63,7 +62,7 @@ class ComputersModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("UPDATE computadora SET  nombre_comp=? , sistOperativo=? , nombre_marca=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
+        $sentencia = $db->prepare("UPDATE computadora SET  nombre_comp=? , sistOperativo=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
         $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
     }
 

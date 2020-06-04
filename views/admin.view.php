@@ -15,10 +15,10 @@ class AdminView
     }
 
     //muestra un formulario para agregar una computadora nueva
-    public function formComputerAdd( $error = null)
+    public function formComputerAdd($marcas)
     {
-        //$this->smarty->assign('listaMarca', $marcas);
-        $this->smarty->assign('error', $error);
+        $this->smarty->assign('listaMarca', $marcas);
+        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/formComputerAdd.tpl');
     }
 

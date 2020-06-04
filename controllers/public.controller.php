@@ -28,9 +28,9 @@ class PublicController
     public function showComputer()
     {
         //pido las computadoras al modelo
-        $computadoras = $this->modelComputers->getAll();
+        $computadorasConMarca = $this->modelComputers->getComputerMarks();
         //actualizo la vista
-        $this->viewPublic->showComputers($computadoras);
+        $this->viewPublic->showComputers($computadorasConMarca);
     }
 
     //muestra una sola computadora

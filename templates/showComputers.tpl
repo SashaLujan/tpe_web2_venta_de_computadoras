@@ -24,15 +24,15 @@
         </tr>
         {foreach $listaComp item= computadora}
            <tr>
-             <td> <b> {strtoupper($computadora->nombre_comp)} </b> </td>
+            <td> <b> {strtoupper($computadora->nombre_comp)} </b> </td>
             <td> <b> {strtoupper($computadora->nombre_marca)}</b> </td>
-                <td> <b>{$computadora->sistOperativo}</b> </td>
-                <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
-                {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
-                    <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
-                    <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
-                {/if}
-                </tr>
+            <td> <b>{$computadora->sistOperativo}</b> </td>
+            <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
+            {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
+                <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
+                <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
+            {/if}
+         </tr>
         {/foreach}
     </table>
 

@@ -28,10 +28,9 @@ class PublicView
     }
 
     //muetra todas las computadoras
-    public function showComputers($computadoras, $error = null)
+    public function showComputers($computadorasConMarca)
     {
-        $this->smarty->assign('listaComp', $computadoras);
-        $this->smarty->assign('error', $error);
+        $this->smarty->assign('listaComp', $computadorasConMarca);
         $this->smarty->display('templates/showComputers.tpl');
     }
 
