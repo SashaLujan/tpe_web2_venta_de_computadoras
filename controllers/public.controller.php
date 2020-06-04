@@ -36,13 +36,13 @@ class PublicController
     //muestra una sola computadora
     public function viewComputer($id_computadora)
     {
-        $computadoras = $this->modelComputers->getAll();
-        $computadora = $this->modelComputers->get($id_computadora);
+        //$computadoras = $this->modelComputers->getAll();
+        $computadorasConMarca = $this->modelComputers->get($id_computadora);
 
-        if (!empty($computadora)) {
-            $this->viewPublic->showComputer($computadora, $computadoras, $this->isAdmin);
+        if (!empty($id_computadora)) {
+            $this->viewPublic->showComputer($computadorasConMarca);
         } else
-            $this->viewPublic->showError($msg);
+            $this->viewPublic->showError("error");
     }
 
     //muestra los datos de una computadora
@@ -68,7 +68,7 @@ class PublicController
     //muestro las computadoras de una marca en particular
     public function showComputerByMark($marca)
     {
-        $computadoraPorMarca = $this->modelComputers->getComputerMarks($marca);
+        $computadoraPorMarca = $this->modelComputers->getComputerByMarks($marca);
         if (empty($computadoraPorMarca)) {
             $this->viewPublic->showError($msg);
         } else {
