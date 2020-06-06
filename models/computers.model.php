@@ -68,13 +68,13 @@ class ComputersModel
         return $sentencia->execute([$nombre, $sistOperativo, $marca]); // ejecuta
     }
 
-    public function update($id_computadora, $nombre, $sistOperativo,$marca, $id_marca_fk)
+    public function update($nombre, $sistOperativo,$marca)
     {
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("UPDATE computadora SET  nombre_comp=? , sistOperativo=? , id_marca_fk=? WHERE id_computadora=?"); // prepara la consulta
-        $sentencia->execute([$id_computadora, $nombre, $sistOperativo, $marca, $id_marca_fk]); // ejecuta
+        $sentencia = $db->prepare("UPDATE computadora SET  computadora.nombre_comp=? , computadora.sistOperativo=? , marca.nombre_marca=? WHERE id_computadora=?"); // prepara la consulta
+        return $sentencia->execute([$nombre, $sistOperativo, $marca]); // ejecuta
     }
 
     public function delete($id_computadora)

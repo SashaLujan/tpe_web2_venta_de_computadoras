@@ -37,10 +37,10 @@ class PublicController
     public function viewComputer($id_computadora)
     {
         //$computadoras = $this->modelComputers->getAll();
-        $computadorasConMarca = $this->modelComputers->get($id_computadora);
+        $computadora = $this->modelComputers->get($id_computadora);
 
         if (!empty($id_computadora)) {
-            $this->viewPublic->showComputer($computadorasConMarca);
+            $this->viewPublic->showComputer($computadora);
         } else
             $this->viewPublic->showError("error");
     }

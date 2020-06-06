@@ -30,11 +30,11 @@ class AdminView
     }
 
     //muestra un formulario para editar una computadora
-    public function showFormEditComputer($computadora, $marca, $error = null)
+    public function showFormEditComputer($computadora, $marca)
     {
-        $this->smarty->assign('computadora', $computadora);
+        $this->smarty->assign('datosComp', $computadora);
         $this->smarty->assign('listaMarca', $marca);
-        $this->smarty->assign('error', $error);
+        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditComputer.tpl');
     }
 

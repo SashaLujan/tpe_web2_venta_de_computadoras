@@ -19,7 +19,7 @@
                 <input name="sistOperativo" type="text" class="form-control">
             </div>
             <button type="submit" class="btn btn-danger">Guardar</button>
-            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>;
+            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
         </form>
     </div>
 

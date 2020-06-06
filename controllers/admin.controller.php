@@ -80,12 +80,12 @@ class AdminController
     //modificacion de computadora
     public function modifyComputer()
     {
-        if (empty($_POST['computadora']) || empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
-            $computadora = $this->modelComputers->get($_POST['computadora']);
+        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
+            $computadora = $this->modelComputers->get($_POST['nombre']);
             $marca = $this->modelMarks->getAll();
             $this->viewAdmin->showFormEditComputer($computadora, $marca);
         }
-        $this->modelComputers->update($_POST['computadora'], $_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['imagen']);
+        $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
     }
 
     public function deleteComputer($id_computadora)

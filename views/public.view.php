@@ -35,9 +35,9 @@ class PublicView
     }
 
     //muetra una computadora 
-    public function showComputer($computadorasConMarca)
+    public function showComputer($computadora)
     {
-        $this->smarty->assign('datosComp', $computadorasConMarca);
+        $this->smarty->assign('datosComp', $computadora);
         $this->smarty->display('templates/showComputer.tpl');
     }
 
