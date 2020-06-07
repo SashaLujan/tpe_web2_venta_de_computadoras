@@ -39,10 +39,10 @@ class AdminView
     }
 
     //muestra un formulario para editar una marca
-    public function showFormEditMark($marca, $error = null)
+    public function showFormEditMark($marca)
     {
-        $this->smarty->assign('marca', $marca);
-        $this->smarty->assign('error', $error);
+        $this->smarty->assign('listaMarca', $marca);
+        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditMark.tpl');
     }
 

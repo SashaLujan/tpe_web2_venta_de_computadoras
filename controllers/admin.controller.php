@@ -103,11 +103,11 @@ class AdminController
 
     public function modifyMark()
     {
-        if (empty($_POST['marca']) || empty($_POST['nombre'])) {
-            $marca = $this->modelMarks->get($_POST['marca']);
+        if (empty($_POST['nombre'])) {
+            $marca = $this->modelMarks->get($_POST['nombre']);
             $this->viewAdmin->showFormEditMark($marca);
         }
-        $this->modelMarks->update($_POST['marca'], $_POST['nombre']);
+        $this->modelMarks->update($_POST['nombre']);
     }
 
     public function deleteMark($id_marca)
