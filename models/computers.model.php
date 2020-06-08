@@ -73,7 +73,8 @@ class ComputersModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("UPDATE computadora SET  computadora.nombre_comp=? , computadora.sistOperativo=? , marca.nombre_marca=? WHERE id_computadora=?"); // prepara la consulta
+        $sentencia = $db->prepare("UPDATE computadora SET  nombre_comp=? , sistOperativo=? , nombre_marca=? 
+        WHERE id_computadora=?"); // prepara la consulta
         return $sentencia->execute([$nombre, $sistOperativo, $marca]); // ejecuta
     }
 

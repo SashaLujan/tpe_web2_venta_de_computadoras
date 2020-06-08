@@ -83,9 +83,14 @@ class AdminController
         if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
             $computadora = $this->modelComputers->get($_POST['nombre']);
             $marca = $this->modelMarks->getAll();
-            $this->viewAdmin->showFormEditComputer($computadora, $marca);
+            $this->viewAdmin->showFormEditComputer($computadora, $marca, "completar todos los campos");
         }
-        $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
+        else{
+            $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
+            $computadora = $this->modelComputers->get($_POST['nombre']);
+            $marca = $this->modelMarks->getAll();
+            $this->viewAdmin->showFormEditComputer($computadora, $marca, "los cambios se guardaron exitosamente");
+        }
     }
 
     public function deleteComputer($id_computadora)
