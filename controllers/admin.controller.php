@@ -109,10 +109,14 @@ class AdminController
     public function modifyMark()
     {
         if (empty($_POST['nombre'])) {
-            $marca = $this->modelMarks->get($_POST['nombre']);
-            $this->viewAdmin->showFormEditMark($marca);
+            $marca = $this->modelMarks->getName($_POST['nombre']);
+            $this->viewAdmin->showFormEditMark($marca, "completar todos los campos");
         }
-        $this->modelMarks->update($_POST['nombre']);
+        else{
+            $this->modelMarks->update($_POST['nombre']);
+            $marca = $this->modelMarks->getName($_POST['nombre']);
+            $this->viewAdmin->showFormEditMark($marca, "los cambios se guardaron correctamente");
+        }
     }
 
     public function deleteMark($id_marca)
