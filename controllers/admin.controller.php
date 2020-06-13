@@ -34,16 +34,46 @@ class AdminController
 
     public function addComputer()
     {
-        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
+        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca']) || empty($_POST['foto'])) {
            // $marcas = $this->modelMarks->getAll();
             $this->viewAdmin->showError("No ingreso todos los datos obligatorios");
         } else {
-                $this->modelComputers->insert($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
+                $this->modelComputers->insert($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['foto']);
                 //$marcas = $this->modelMarks->getAll();
                 //$this->viewAdmin->formComputerAdd("La computadora fue guardada correctamente");
                 header('Location: ' . BASE_URL . 'agregarComp');
             
         }
+    }
+
+    //muestra un formulario para editar la comp
+    public function editComputer($id_computadora)
+    {
+        $computadora = $this->modelComputers->get($id_computadora);
+        $marca = $this->modelMarks->getAll();
+        $this->viewAdmin->showFormEditComputer($computadora, $marca);
+    }
+
+    //modificacion de computadora
+    public function modifyComputer()
+    {
+        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca']) || empty($_POST['foto'])) {
+            $computadora = $this->modelComputers->get($_POST['nombre']);
+            $marca = $this->modelMarks->getAll();
+            $this->viewAdmin->showFormEditComputer($computadora, $marca, "completar todos los campos");
+        }
+        else{
+            $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['id_computadora'],  $_POST['foto']);
+            $computadora = $this->modelComputers->get($_POST['nombre']);
+            $marca = $this->modelMarks->getAll();
+            $this->viewAdmin->showFormEditComputer($computadora, $marca, "los cambios se guardaron exitosamente");
+        }
+    }
+
+    public function deleteComputer($id_computadora)
+    {
+        $this->modelComputers->delete($id_computadora);
+        header('Location: ' . BASE_URL . 'listaComp');
     }
 
     //muestra un formulario vacio para agregar una marca
@@ -67,36 +97,6 @@ class AdminController
                 header('Location: ' . BASE_URL . 'agregarMarca');
             }
         }
-    }
-
-    //muestra un formulario para editar la comp
-    public function editComputer($id_computadora)
-    {
-        $computadora = $this->modelComputers->get($id_computadora);
-        $marca = $this->modelMarks->getAll();
-        $this->viewAdmin->showFormEditComputer($computadora, $marca);
-    }
-
-    //modificacion de computadora
-    public function modifyComputer()
-    {
-        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca'])) {
-            $computadora = $this->modelComputers->get($_POST['nombre']);
-            $marca = $this->modelMarks->getAll();
-            $this->viewAdmin->showFormEditComputer($computadora, $marca, "completar todos los campos");
-        }
-        else{
-            $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca']);
-            $computadora = $this->modelComputers->get($_POST['nombre']);
-            $marca = $this->modelMarks->getAll();
-            $this->viewAdmin->showFormEditComputer($computadora, $marca, "los cambios se guardaron exitosamente");
-        }
-    }
-
-    public function deleteComputer($id_computadora)
-    {
-        $this->modelComputers->delete($id_computadora);
-        header('Location: ' . BASE_URL . 'listaComp');
     }
 
     //muestra formulario para editar
