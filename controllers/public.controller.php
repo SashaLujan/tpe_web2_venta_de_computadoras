@@ -48,7 +48,7 @@ class PublicController
     //muestra los datos de una computadora
     public function viewComputerMark($id_computadora)
     {
-        $computadora = $this->modelComputers->get($id_computadora);
+        $computadora = $this->modelComputers->getComputerMarks($id_computadora);
 
         if (!empty($computadora)) {
             $this->viewPublic->showComputerMark($computadora);

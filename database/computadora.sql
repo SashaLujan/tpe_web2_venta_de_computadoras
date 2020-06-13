@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2020 a las 20:59:51
+-- Tiempo de generación: 13-06-2020 a las 21:56:54
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `computadora`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE `administradores` (
+  `id_administrador` int(2) NOT NULL,
+  `nombre` varchar(25) DEFAULT NULL,
+  `nombre_usuario` varchar(25) DEFAULT NULL,
+  `contraseña` varchar(300) DEFAULT NULL,
+  `tipo` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`, `tipo`) VALUES
+(0, 'sasha lujan', 'lujanSasha', '$2y$12$zPzdWTIun4FCqsQxsZbT1eB/etmxH3YBj28ADZcRjEI7WaBrCXkzq', 'usuario'),
+(1, 'admin', 'admin_user@gmail.com', '$2y$12$x81.WU7PH4Hk8fBk5WzA/.wL8aU24GfBsrS/R1SFw5RBAa7S8XsYS', 'administrador');
 
 -- --------------------------------------------------------
 
@@ -51,9 +73,41 @@ INSERT INTO `computadora` (`id_computadora`, `nombre_comp`, `sistOperativo`, `im
 (23, 'notebook', 'linux', '', 11),
 (24, 'notebook 540', 'windows', '', 5);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `marca`
+--
+
+CREATE TABLE `marca` (
+  `id_marca` int(25) NOT NULL,
+  `nombre_marca` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `marca`
+--
+
+INSERT INTO `marca` (`id_marca`, `nombre_marca`) VALUES
+(1, 'TCL'),
+(2, 'HP'),
+(3, 'Lenovo'),
+(4, 'APPLE'),
+(5, 'EXO'),
+(6, 'LG'),
+(7, 'Intel'),
+(11, 'IBM'),
+(14, 'POSITIVO BGH');
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`id_administrador`);
 
 --
 -- Indices de la tabla `computadora`
@@ -64,6 +118,13 @@ ALTER TABLE `computadora`
   ADD KEY `id_marca_fk` (`id_marca_fk`);
 
 --
+-- Indices de la tabla `marca`
+--
+ALTER TABLE `marca`
+  ADD PRIMARY KEY (`id_marca`),
+  ADD KEY `id_marca` (`id_marca`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -72,6 +133,12 @@ ALTER TABLE `computadora`
 --
 ALTER TABLE `computadora`
   MODIFY `id_computadora` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT de la tabla `marca`
+--
+ALTER TABLE `marca`
+  MODIFY `id_marca` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
