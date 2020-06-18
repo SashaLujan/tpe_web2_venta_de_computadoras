@@ -97,8 +97,11 @@ switch ($parametros[0]) {
         case 'cerrar_sesion':
                 $controller = new LoginController();
                 $controller->logout();
-            break;
-
+                break;
+        case 'registrarse':
+                $controller = new LoginController();
+                $controller->formCheckIn();
+                break;
         default:
                 $controller = new PublicController();
                 $controller->showError("Se ha producido un error, vuelva a intentarlo", "imagenes/logo.jpeg");

@@ -64,4 +64,10 @@ class PublicView
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/computersByMark.tpl');
     }
+
+    //muestra un formulario para poder cargar un usuario nuevo
+    public function formCheck($error=null){
+        $this->smarty->assign('error', $error);
+        $this->smarty->display('templates/formUser.tpl');
+    }
 }
