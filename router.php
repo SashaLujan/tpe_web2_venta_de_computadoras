@@ -102,6 +102,10 @@ switch ($parametros[0]) {
                 $controller = new LoginController();
                 $controller->formCheckIn();
                 break;
+        case 'guardar_usuario':
+                $controller = new LoginController();
+                $controller->addUser();
+                break;
         default:
                 $controller = new PublicController();
                 $controller->showError("Se ha producido un error, vuelva a intentarlo", "imagenes/logo.jpeg");
