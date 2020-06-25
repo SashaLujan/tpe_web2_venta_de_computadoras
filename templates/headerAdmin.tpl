@@ -29,6 +29,11 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="listaMarca">MARCAS</a>
                         </li>
+                        {if {$type == "administrador"}}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="listar_usuarios">USUARIOS</a>
+                            </li>
+                        {/if}
                     </ul>
                 </div>
                 <div>

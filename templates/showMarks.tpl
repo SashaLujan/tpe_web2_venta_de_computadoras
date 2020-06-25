@@ -4,7 +4,15 @@
 {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
     {include 'header.tpl'}
 {/if}
-{if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
+{*{if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
+{if {$type != "administrador"}}
+    <div>
+        {if {$error}}
+            <div>
+                {$error}
+            </div>
+        {/if}
+    </div>
     <table>
         <h4><a class="btn btn-danger" href="agregarMarca"><b>Alta</b></a></h4>
     </table>

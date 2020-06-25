@@ -19,6 +19,10 @@
                     <label>Sistema Operativo</label>
                     <input name="sistOpertivo" type="text" value={$datosComp->sistOperativo} class="form-control">
                 </div>
+                <div>
+                    <label>Foto</label>
+                    <input type="text" name="foto" value="{$datosComp->imagen}">
+                </div>
             {*<input name="marca" type="hidden" value={$computadora->id_marca} class="form-control">*}
             <button type="submit" class="btn btn-danger"><b>Guardar</b></button>
             <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>

@@ -4,7 +4,7 @@
             <h1>DATOS DEL USUARIO</h1>
             <label>Ingrese su nombre</label>
             <input type="text" name="nombre">
-            <label>Ingrese su usuario (correo electronico)</label>
+            <label>Ingrese su correo electronico</label>
             <input type="email" name="email">
             <label>Ingrese la contraseña</label>
             <input type="password" name="contraseña">
