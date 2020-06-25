@@ -70,7 +70,7 @@ class PublicController
     {
         $computadoraPorMarca = $this->modelComputers->getComputerByMarks($marca);
         if (empty($computadoraPorMarca)) {
-            $this->viewPublic->showError($msg);
+            $this->viewPublic->showError("no hay computadoras");
         } else {
             $this->viewPublic->computersByMark($computadoraPorMarca);
         }

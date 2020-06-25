@@ -38,4 +38,16 @@ class AuthHelper
             return $_SESSION['nombre_usuario'];
         }
     }
+
+    //verifica que haya un usuario logueado y devuelve que tipo de usuario es
+    static public function typeLogged() {
+        if(session_status() != PHP_SESSION_ACTIVE){
+            session_start();
+        } 
+        if (isset($_SESSION['TIPO'])) {
+            return $_SESSION['TIPO'];
+        } else {
+            return null;
+        }
+    }
 }

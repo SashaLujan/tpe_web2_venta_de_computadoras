@@ -18,7 +18,6 @@ class AdminView
     public function formComputerAdd($marcas)
     {
         $this->smarty->assign('listaMarca', $marcas);
-        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/formComputerAdd.tpl');
     }
 
@@ -34,7 +33,6 @@ class AdminView
     {
         $this->smarty->assign('datosComp', $computadora);
         $this->smarty->assign('listaMarca', $marca);
-        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditComputer.tpl');
     }
 
@@ -42,7 +40,6 @@ class AdminView
     public function showFormEditMark($marca)
     {
         $this->smarty->assign('listaMarca', $marca);
-        //$this->smarty->assign('error', $error);
         $this->smarty->display('templates/showFormEditMark.tpl');
     }
 

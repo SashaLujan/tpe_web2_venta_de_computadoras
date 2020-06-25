@@ -29,6 +29,9 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="listaMarca">MARCAS</a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="registrarse">REGISTRARSE</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="login-container">
@@ -42,5 +45,8 @@
                         <a class="navbar-brand" href='cerrar_sesion'><p class="">Usuario: {$administrador}</p>  Logout </a>
                         {/if}
                     </form>
+                    <div class="contenedor-olvide-contraeña">
+                        <a class="nav-link" href="recuperar_contraseña">Olvidé la Contraseña<span class="sr-only">(current)</span></a>
+                    </div>
                 </div>
             </nav>

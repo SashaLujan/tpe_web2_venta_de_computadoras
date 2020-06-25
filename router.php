@@ -16,7 +16,7 @@ $parametros = explode('/', $accion);
 
 switch ($parametros[0]) {
 
-                //acciones del public.controller
+        //acciones del public.controller
         case 'home':
                 $controller = new PublicController();
                 $controller->home();
@@ -84,12 +84,9 @@ switch ($parametros[0]) {
                 $controller = new AdminController();
                 $controller->deleteMark($parametros[1]);
                 break;
-        case 'cerrar_sesion':
-                $controller = new LoginController();
-                $controller->logout();
-                break;
 
                 //acciones del login.controller
+
         case 'loguearse':
                 $controller = new LoginController();
                 $controller->loginAdmin();
@@ -106,6 +103,7 @@ switch ($parametros[0]) {
                 $controller = new LoginController();
                 $controller->addUser();
                 break;
+                
         default:
                 $controller = new PublicController();
                 $controller->showError("Se ha producido un error, vuelva a intentarlo", "imagenes/logo.jpeg");
