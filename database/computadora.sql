@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2020 a las 21:56:54
+-- Tiempo de generación: 27-06-2020 a las 02:42:08
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -43,6 +43,20 @@ CREATE TABLE `administradores` (
 INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`, `tipo`) VALUES
 (0, 'sasha lujan', 'lujanSasha', '$2y$12$zPzdWTIun4FCqsQxsZbT1eB/etmxH3YBj28ADZcRjEI7WaBrCXkzq', 'usuario'),
 (1, 'admin', 'admin_user@gmail.com', '$2y$12$x81.WU7PH4Hk8fBk5WzA/.wL8aU24GfBsrS/R1SFw5RBAa7S8XsYS', 'administrador');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentarios` int(25) NOT NULL,
+  `comentario` text NOT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `puntaje` int(25) NOT NULL,
+  `id_computadora` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -110,6 +124,12 @@ ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id_administrador`);
 
 --
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentarios`);
+
+--
 -- Indices de la tabla `computadora`
 --
 ALTER TABLE `computadora`
@@ -127,6 +147,12 @@ ALTER TABLE `marca`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentarios` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `computadora`
