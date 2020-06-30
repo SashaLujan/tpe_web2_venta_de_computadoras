@@ -18,6 +18,10 @@
                 <label>sistema operativo</label>
                 <input name="sistOperativo" type="text" class="form-control">
             </div>
+            <div class="form-group">
+                <label>imagen</label>
+                <input name="foto" type="img" class="form-control">
+            </div>
             <button type="submit" class="btn btn-danger">Guardar</button>
             <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
         </form>

@@ -53,7 +53,7 @@ class PublicController
         if (!empty($computadora)) {
             $this->viewPublic->showComputerMark($computadora);
         } else
-            $this->viewPublic->showError($msg);
+            $this->viewPublic->showError("error con la computadora seleccionada");
     }
 
     //muestra todas las marcas de la db
