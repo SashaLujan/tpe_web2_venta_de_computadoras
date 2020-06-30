@@ -1,7 +1,7 @@
 {include 'headerAdmin.tpl'}
     <div class="container">
         <h1>Inserte una computadora</h1>
-        <form action="guardarComp" method="post" class="my-4">
+        <form action="guardarComp" method="POST" enctype="multipart/form-data" class="my-4">
             <div class="form-group">
                 <label>nombre</label>
                 <input name="nombre" type="text" class="form-control">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label>imagen</label>
-                <input name="foto" type="img" class="form-control">
+                <input name="foto" type="file" class="form-control">
             </div>
             <button type="submit" class="btn btn-danger">Guardar</button>
             <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
