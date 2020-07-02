@@ -37,22 +37,28 @@ class AdminController
         $nombreOriginal = $_FILES['foto']['name'];
         // Nombre en el file system:
         $nombreFisico = $_FILES['foto']['tmp_name'];
-        $nombreFinal = "images/jugadores/". uniqid("", true) . "." . strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
+        $nombreFinal = "images/computadoras/". uniqid("", true) . "." . strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
         move_uploaded_file($nombreFisico, $nombreFinal); 
         return $nombreFinal;
     }
 
+    //guarda una nueva computadora
     public function addComputer()
     {
-        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca']) || empty($_POST['foto'])) {
+        if (empty($_POST['nombre']) || empty($_POST['sistOperativo']) || empty($_POST['marca']) || empty($_POST['foto']['name'] == "")) {
            // $marcas = $this->modelMarks->getAll();
             $this->viewAdmin->showError("No ingreso todos los datos obligatorios");
         } else {
-                $this->modelComputers->insert($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['foto']);
+            if($_FILES['foto']['type'] == "image/jpg" || $_FILES['foto']['type'] == "image/jpeg" || $_FILES['foto']['type'] == "image/png"){
+                $imagen = $this->copyImage();
+                $this->modelComputers->insert($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $imagen);
                 //$marcas = $this->modelMarks->getAll();
                 //$this->viewAdmin->formComputerAdd("La computadora fue guardada correctamente");
                 header('Location: ' . BASE_URL . 'agregarComp');
-            
+            }
+            else{
+                $this->viewAdmin->showError("no ingreso un archivo de imagen correcto");
+            }
         }
     }
 
@@ -73,10 +79,19 @@ class AdminController
             $this->viewAdmin->showFormEditComputer($computadora, $marca, "completar todos los campos");
         }
         else{
-            $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['id_computadora'],  $_POST['foto']);
-            $computadora = $this->modelComputers->get($_POST['nombre']);
-            $marca = $this->modelMarks->getAll();
-            $this->viewAdmin->showFormEditComputer($computadora, $marca, "los cambios se guardaron exitosamente");
+            if(($_FILES['foto']['name'] == "")){
+                $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['id_computadora'],  $_POST['foto']);
+            }
+            else{
+                if($_FILES['foto']['type'] == "image/jpg" || $_FILES['foto']['type'] == "image/jpeg" || $_FILES['foto']['type'] == "image/png"){
+                    unlink($_POST['foto']);
+                    $imagen = $this->copyImage();
+                    $this->modelComputers->update($_POST['nombre'], $_POST['sistOperativo'], $_POST['marca'], $_POST['id_computadora'],  $imagen);
+                }
+                else{
+                    $this->viewAdmin->showError("no ingreso un archivo de imagen correcto");
+                }
+            }
         }
     }
 
