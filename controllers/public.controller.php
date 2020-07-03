@@ -10,7 +10,6 @@ class PublicController
     private $modelComputers;
     private $modelMarks;
     private $viewPublic;
-    private $isAdmin;
 
     public function __construct()
     {
