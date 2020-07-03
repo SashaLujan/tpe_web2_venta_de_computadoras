@@ -8,6 +8,8 @@ $router = new Router();
 
 //creo la tabla de ruteo
 $router->addRoute('comentarios/:ID', 'GET', 'CommentsApiController', 'getComments'); //obtengo todos los comentarios de una computadora
+$router->addRoute('comentario/:ID', 'DELETE', 'CommentsApiController', 'deleteComment'); //Elimino un comentario (id del comentario)
+$router->addRoute('comentario', 'POST', 'CommentsApiController', 'addComment'); //Agrego un comentario
 
 
 //Rutea
