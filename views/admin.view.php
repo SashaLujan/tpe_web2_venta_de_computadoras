@@ -57,6 +57,21 @@ class AdminView
         $this->smarty->display('templates/formDeleteMark.tpl');
     }
 
+    //mustra todos los usuarios y administradores logueados
+    public function showUsers($usuarios, $tipos)
+    {
+        $this->smarty->assign('usuarios', $usuarios);
+        $this->smarty->assign('tipos', $tipos);
+        $this->smarty->display('templates/showUsers.tpl');
+    }
+
+    //elimina un usuario
+    public function deleteUser($usuario)
+    {
+        $this->smarty->assign('usuario', $usuario);
+        $this->smarty->display('templates/formUserDelete.tpl');
+    }
+
     public function showError($msg)
     {
         $this->smarty->assign('mensaje', $msg);
