@@ -45,4 +45,15 @@ class ComentariosModel
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
         return $comentarios;
     }
+
+    //obtengo un comentario
+    public function get($id_comentario){
+        // 1. abro la conexión con MySQL 
+        $db = $this->createConection();
+        // 2. enviamos la consulta (3 pasos)
+        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_comentario = ?"); // prepara la consulta
+        $sentencia->execute([$id_comentario]); // ejecuta
+        $comentario = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        return $comentario;
+    }
 }
