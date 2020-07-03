@@ -31,7 +31,7 @@ class AuthHelper
     static public function checkLogged()
     {
         session_start();
-        if (!isset($_SESSION['nombre_usuario'])) {
+        if (!isset($_SESSION['nombre_usuario']) || $_SESSION['TIPO'] != "administrador") {
             header('Location: ' . BASE_URL . 'home');
             die();
         } else {
