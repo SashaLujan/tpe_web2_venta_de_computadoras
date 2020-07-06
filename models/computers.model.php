@@ -36,12 +36,12 @@ class ComputersModel
     }
 
     //muestra las computadoras de una marca     ----------PREGUNTAR--------
-    public function getComputerByMarks($marca)
+    public function getComputerByMarks()
     {
         $db = $this->createConection(); // 1. abro la conexión con MySQL 
         //Creamos la consulta para obtener una categoria
         $sentencia = $db->prepare("SELECT * FROM computadora  WHERE nombre_marca=?"); // prepara la consulta
-        $sentencia->execute([$marca]); // ejecuta
+        $sentencia->execute(); // ejecuta
         $computadora = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
         return $computadora;
     }

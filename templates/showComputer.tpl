@@ -13,18 +13,18 @@
                 <td>foto : {strtoupper($computadora->imagen)}</td>
             </tr>
         {/foreach}
-
+</table>
         <div > {*muestra un espacio para hacer un comentario*}
             <input type="hidden" name="tipo_usuario" value="{$type}">
             <input type="hidden" name="nombre_usuario" value="{$nameAdmin}"> 
             <input type="hidden" name="id_computadora" value="{$computadora->id_computadora}">
-            {include 'templates/vue/formAddComment.vue'}
+           {* {include 'templates/vue/formAddComment.vue'}*}
         </div>
         <div> {*muestra los comentarios*}
             <input type="hidden" name="usuario" value="{$type}">
-            <input type="hidden" name="jugador" value="{$datosJug->id_jugador}">
+            <input type="hidden" name="computadora" value="{$computadora->id_computadora}">
             {include 'templates/vue/showComments.vue'}
         </div>
-    </table>
-    <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
+    
+    <a class="btn btn-dark" href="listaComp"><b>Volver</b></a>
 {include 'templates/footer.tpl'}

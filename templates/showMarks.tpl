@@ -14,7 +14,7 @@
         {/if}
     </div>
     <table>
-        <h4><a class="btn btn-danger" href="agregarMarca"><b>Alta</b></a></h4>
+        <h4><a class="btn btn-dark" href="agregarMarca"><b>Alta</b></a></h4>
     </table>
 {/if}
 <table>
@@ -25,13 +25,13 @@
             </td>
             {if {$type != "administrador"}} {*SI NO ES UN ADMINISTRADOR*}
                 <td>
-                    <a class="btn btn-danger" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
+                    <a class="btn btn-dark" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
                 </td>          
             {/if}
             {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
                 <td>
-                    <a class="btn btn-danger" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
-                    <a class="btn btn-danger" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
+                    <a class="btn btn-dark" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
+                    <a class="btn btn-dark" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
                 </td>
             {/if}
         </tr>

@@ -38,7 +38,7 @@
                         </li>
                     </ul>
                 </div>
-                {*
+            
                 <div class="login-container">
                     <form action="loguearse" method="POST">
                         {if !$isAdmin}
@@ -54,5 +54,4 @@
                         <a class="nav-link" href="recuperar_contraseña">Olvidé la Contraseña<span class="sr-only">(current)</span></a>
                     </div>
                 </div>
-                *}
             </nav>
