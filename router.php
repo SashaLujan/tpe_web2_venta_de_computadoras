@@ -109,7 +109,7 @@ switch ($parametros[0]) {
                 break;
         case 'eliminar_usuario':
                 $controller = new LoginController();
-                $controller->deleteUser();
+                $controller->deleteUser($parametros[1]);
         break;
         case 'editar_usuario':
                 $controller = new LoginController();
