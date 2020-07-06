@@ -1,6 +1,7 @@
 <?php
 
 require_once 'libs/Smarty.class.php';
+require_once 'helpers/auth.helper.php';
 
 class PublicView
 {
@@ -11,8 +12,8 @@ class PublicView
         $this->smarty = new Smarty();
         $admin = authHelper::userLogged();
         $this->smarty->assign('isAdmin', $admin);
-        $nameAdmin = authHelper::nameLogged();
-        $this->smarty->assign('nameAdmin', $nameAdmin);
+        $nameUser = authHelper::nameLogged();
+        $this->smarty->assign('nameUser', $nameUser);
         $type = authHelper::typeLogged();
         $this->smarty->assign('type', $type);
     }

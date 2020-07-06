@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2020 a las 02:42:08
+-- Tiempo de generación: 06-07-2020 a las 23:06:58
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -25,28 +25,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `administradores`
---
-
-CREATE TABLE `administradores` (
-  `id_administrador` int(2) NOT NULL,
-  `nombre` varchar(25) DEFAULT NULL,
-  `nombre_usuario` varchar(25) DEFAULT NULL,
-  `contraseña` varchar(300) DEFAULT NULL,
-  `tipo` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `administradores`
---
-
-INSERT INTO `administradores` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`, `tipo`) VALUES
-(0, 'sasha lujan', 'lujanSasha', '$2y$12$zPzdWTIun4FCqsQxsZbT1eB/etmxH3YBj28ADZcRjEI7WaBrCXkzq', 'usuario'),
-(1, 'admin', 'admin_user@gmail.com', '$2y$12$x81.WU7PH4Hk8fBk5WzA/.wL8aU24GfBsrS/R1SFw5RBAa7S8XsYS', 'administrador');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `comentarios`
 --
 
@@ -54,9 +32,18 @@ CREATE TABLE `comentarios` (
   `id_comentarios` int(25) NOT NULL,
   `comentario` text NOT NULL,
   `usuario` varchar(100) NOT NULL,
+  `fecha` varchar(25) NOT NULL,
   `puntaje` int(25) NOT NULL,
   `id_computadora` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentarios`, `comentario`, `usuario`, `fecha`, `puntaje`, `id_computadora`) VALUES
+(3, 'la computadora llego con una falla en el teclado.', 'lujanSasha', '06-07-2020', 2, 7),
+(4, 'la atencion muy buena, llego bien la computadora', 'lujanSasha', '06-07-202', 5, 9);
 
 -- --------------------------------------------------------
 
@@ -113,15 +100,31 @@ INSERT INTO `marca` (`id_marca`, `nombre_marca`) VALUES
 (11, 'IBM'),
 (14, 'POSITIVO BGH');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_administrador` int(2) NOT NULL,
+  `nombre` varchar(25) DEFAULT NULL,
+  `nombre_usuario` varchar(25) DEFAULT NULL,
+  `contraseña` varchar(300) DEFAULT NULL,
+  `tipo` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_administrador`, `nombre`, `nombre_usuario`, `contraseña`, `tipo`) VALUES
+(0, 'sasha lujan', 'lujanSasha', '$2y$12$zPzdWTIun4FCqsQxsZbT1eB/etmxH3YBj28ADZcRjEI7WaBrCXkzq', 'usuario'),
+(1, 'admin', 'admin_user@gmail.com', '$2y$12$x81.WU7PH4Hk8fBk5WzA/.wL8aU24GfBsrS/R1SFw5RBAa7S8XsYS', 'administrador');
+
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`id_administrador`);
 
 --
 -- Indices de la tabla `comentarios`
@@ -145,6 +148,12 @@ ALTER TABLE `marca`
   ADD KEY `id_marca` (`id_marca`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_administrador`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -152,7 +161,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentarios` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comentarios` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `computadora`

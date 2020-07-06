@@ -34,6 +34,7 @@ class LoginController
                     $_SESSION['IS_LOGGED'] = true;
                     $_SESSION['nombre_usuario'] = $user->nombre; //guardo el nombre de usuario
                     $_SESSION['TIPO'] = $user->tipo;
+                    $_SESSION['ID'] = $user->id_usuario;
                     header('Location: ' . BASE_URL . 'home');
                 } else {
                     $this->viewPublic->showHome("contraseña incorrecta", session_status() === PHP_SESSION_ACTIVE);
@@ -78,6 +79,7 @@ class LoginController
                     $_SESSION['IS_LOGGED'] = true;
                     $_SESSION['nombre_usuario'] = $nombre;  //Guardo el nombre del usuario
                     $_SESSION['TIPO'] = $tipo;
+                    $_SESSION['ID'] = $user->id_usuario;
                     header('Location: ' . BASE_URL . 'home');
                 }
             }
@@ -99,7 +101,7 @@ class LoginController
     }
 
     //elimina un usuario
-    public function deleteUser()
+    public function deleteUser($id_usuario)
     {
         $this->modelLogin->delete($id_usuario);
         header('Location: ' . BASE_URL . 'listar_usuarios');

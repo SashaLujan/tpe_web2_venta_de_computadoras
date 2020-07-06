@@ -17,7 +17,7 @@ class LoginModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM administradores WHERE nombre_usuario = ?"); // prepara la consulta
+        $sentencia = $db->prepare("SELECT * FROM usuarios WHERE nombre_usuario = ?"); // prepara la consulta
         $sentencia->execute([$username]); // ejecuta
         $administrador = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $administrador;
@@ -28,7 +28,7 @@ class LoginModel
         // 1. abro la conexión con MySQL
         $db = $this->createConection();
          // 2. enviamos la consulta (3 pasos)
-         $sentencia = $db->prepare("INSERT INTO administradores (nombre, nombre_usuario, contraseña, tipo) VALUES (?, ?, ?, ?)"); // prepara la consulta
+         $sentencia = $db->prepare("INSERT INTO usuarios (nombre, nombre_usuario, contraseña, tipo) VALUES (?, ?, ?, ?)"); // prepara la consulta
          return $sentencia->execute([$nombre, $nombre_usuario, $contraseña, $tipo]);
     }
 

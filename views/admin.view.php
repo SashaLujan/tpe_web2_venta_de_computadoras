@@ -1,6 +1,7 @@
 <?php
 
 require_once 'libs/Smarty.class.php';
+require_once 'helpers/auth.helper.php';
 
 class AdminView
 {
@@ -10,8 +11,10 @@ class AdminView
     public function __construct()
     {
         $this->smarty = new Smarty();
-        $nameAdmin = authHelper::nameLogged();
-        $this->smarty->assign('nameAdmin', $nameAdmin);
+        $nameUser = authHelper::nameLogged();
+        $this->smarty->assign('nameUser', $nameUser);
+        $type = authHelper::typeLogged();
+        $this->smarty->assign('type', $type);
     }
 
     //muestra un formulario para agregar una computadora nueva
