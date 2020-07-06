@@ -14,24 +14,16 @@
             </tr>
         {/foreach}
 
-        <div >
-            {if {$type == "usuario"}}
-                <form action="guardar_comentario" method="POST">
-                    <textarea name="comentarios"></textarea>
-                    <input type="hidden" name="usuario" value="{$nameUser}">
-                    <input type="hidden" name="zona_fecha" value="{date_default_timezone_set}">
-                    <input type="hidden" name="fecha" value="{date("d-m-o")} - {date("h:i a")}">
-                    <select name="puntuacion">
-                        <option disabled selected>Puntuacion</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                    <button type="submit"><b>Publicar</b></button>
-                </form>
-            {/if}
+        <div > {*muestra un espacio para hacer un comentario*}
+            <input type="hidden" name="tipo_usuario" value="{$type}">
+            <input type="hidden" name="nombre_usuario" value="{$nameAdmin}"> 
+            <input type="hidden" name="id_computadora" value="{$computadora->id_computadora}">
+            {include 'templates/vue/formAddComment.vue'}
+        </div>
+        <div> {*muestra los comentarios*}
+            <input type="hidden" name="usuario" value="{$type}">
+            <input type="hidden" name="jugador" value="{$datosJug->id_jugador}">
+            {include 'templates/vue/showComments.vue'}
         </div>
     </table>
     <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>

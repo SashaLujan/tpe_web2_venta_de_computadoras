@@ -1,11 +1,10 @@
-
     {if {$isAdmin}} {*SI ES UN ADMINISTRADOR*}
         {include 'headerAdmin.tpl'}
     {/if}
     {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
         {include 'header.tpl'}
     {/if}
-    {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
+    {if {$type != "administrador"}} {*SI NO ES UN ADMINISTRADOR*}
         <div>
             <p>
                 {if {$datosComp[0]->id_marca_fk} == 1}

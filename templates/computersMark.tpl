@@ -29,7 +29,7 @@
                 {/if}
             </p>
         </div>
-        {if $isAdmin} {*SI ES UN ADMINISTRADOR*}
+        {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
             <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
             <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
         {/if}
@@ -59,6 +59,11 @@
                 {/if}
             <br><h4><b>sistema operativo</b></h4>
             <h3>{$computadora->sistOperativo}</h3>
+            <h3>{$computadora->imagen}</h3>
+
+            <input type="hidden" name="usuario" value="{$type}">
+            <input type="hidden" name="computadora" value="{$computadora->id_computadora}">
+            {include 'templates/vue/showComments.vue'}
         </div>
 
 {include 'templates/footer.tpl'}

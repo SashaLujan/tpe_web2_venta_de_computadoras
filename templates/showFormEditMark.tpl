@@ -1,7 +1,7 @@
 {include 'templates/headerAdmin.tpl'}
     
     <div class="container">  
-        <h1>Edite la marca</h1>
+        <h1>Modifique los datos de la marca</h1>
         <form action="guardarEditMarca" method="POST" class="my-4">
             {foreach $listaMarca item= marca}
             <div class="form-group">

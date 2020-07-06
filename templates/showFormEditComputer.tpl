@@ -1,6 +1,6 @@
 {include 'templates/headerAdmin.tpl'}
     <div class="container">  
-        <h1>Edite la computadora</h1>
+        <h1>Modifique los datos de la computadora</h1>
         <form action="guardarEditComputer" method="POST" class="my-4">
             <input name="id_computadora" type="hidden" value={$datosComp>id_computadora} class="form-control">
                 <div class="form-group">
@@ -8,7 +8,7 @@
                     <input name="nombre" type="text" value={$datosComp->nombre_comp} class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Marca</label>
+                    <label>Nombre de marca</label>
                     <select name="marca">
                     {foreach from=$listaMarca item=marca}
                         <option value= {$marca->id_marca}>{$marca->nombre_marca}</option>
