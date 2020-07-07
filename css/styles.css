@@ -66,3 +66,16 @@ h4{
     border-radius: 15px;
     margin-bottom: 10px;
 }
+/*-----showUsers------*/
+.contenedor-usuario{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap:1em;
+    margin: 20px;
+    width: 200px;
+}
+/*-----showFormEditMark-----*/
+.contenedor-edit-marca{
+    width: 700px;
+    margin: 10px auto;
+}

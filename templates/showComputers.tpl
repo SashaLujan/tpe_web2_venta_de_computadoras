@@ -26,14 +26,14 @@
                 </div>
                 {if {$type != "administrador"}}
                     <div class="centrar">
-                        <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></h4>
+                        <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-dark">Ver</a></h4>
                     </div>
                 {/if}
                 {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
                     <div class="centrar">
-                        <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></h4>
-                        <h4><a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></h4>
-                        <h4><a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></h4>
+                        <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-dark">Ver</a></h4>
+                        <h4><a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-dark">Borrar </a></h4>
+                        <h4><a href="editarComp/{$computadora->id_computadora}" class="btn btn-dark">Editar </a></h4>
                     </div>
                 {/if}
             </div>

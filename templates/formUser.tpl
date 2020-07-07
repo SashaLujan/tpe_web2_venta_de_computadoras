@@ -1,22 +1,22 @@
 {include 'templates/header.tpl'}
     <div class="contenedor">
         <form action="guardar_usuario" method="POST">
-            <h1>DATOS DEL USUARIO</h1>
+            <h1>Registrarse</h1>
             <div class="form-group">
                 <label>Ingrese su nombre</label>
-                <input type="text" name="nombre" value="{$nombre}">
+                <input type="text" placeholder="NOMBRE" name="nombre">
             </div>
             <div class="form-group">
                 <label>Ingrese su correo electronico</label>
-                <input type="email" name="email"  value="{$mail}">
+                <input type="email" placeholder="EMAIL" name="email">
             </div>
             <div class="form-group">
                 <label>Ingrese la contraseña</label>
-                <input type="password" name="contraseña">
+                <input type="password" placeholder="CONTRASEÑA" name="contraseña">
             </div>
             <div class="form-group">
                 <label>Repita la contraseña</label>
-                <input type="password" name="repitaContraseña">
+                <input type="password" placeholder="REPITA CONTRASEÑA" name="repitaContraseña">
             </div> 
             <button type="submit" class="btn btn-dark"><b>Registrar</b></button>
             <a class="btn btn-dark" href="#"><b>Salir</b></a>;

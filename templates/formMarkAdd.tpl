@@ -1,7 +1,7 @@
 {include 'templates/headerAdmin.tpl'}
     <div class="contenedor">
-        <h1>Inserte una marca</h1>
-        <form action="guardarMarca" method="post" class="my-4">
+       <form action="guardarMarca" method="post" class="my-4">
+            <h4>Inserte una marca</h4>
             <div class="form-group">
                 <label>nombre</label>
                 <input name="nombre" type="text" class="form-control">
