@@ -1,5 +1,5 @@
 {include 'headerAdmin.tpl'}
-    <div class="container">
+    <div class="contenedor">
         <h1>Inserte una computadora</h1>
         <form action="guardarComp" method="POST" enctype="multipart/form-data" class="my-4">
             <div class="form-group">

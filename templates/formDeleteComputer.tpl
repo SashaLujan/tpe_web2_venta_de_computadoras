@@ -1,5 +1,5 @@
 {include 'templates/headerAdmin.tpl'}
-    <div id="eliminarComp">
+    <div id="eliminarComp" class="contenedor">
         <label>¿Está seguro que quiere Eliminar?</label>
         <div>
             <a class="btn btn-danger" href="eliminarComp/{$computadora->id_computadora}"><b>Eliminar</b></a>;

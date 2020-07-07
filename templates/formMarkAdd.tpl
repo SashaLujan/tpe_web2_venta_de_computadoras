@@ -1,5 +1,5 @@
 {include 'templates/headerAdmin.tpl'}
-    <div class="container">
+    <div class="contenedor">
         <h1>Inserte una marca</h1>
         <form action="guardarMarca" method="post" class="my-4">
             <div class="form-group">

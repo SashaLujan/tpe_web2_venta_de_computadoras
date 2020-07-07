@@ -5,41 +5,36 @@
     {include 'header.tpl'}
 {/if}
 {if {$type != "administrador"}} {*SI ES UN ADMINISTRADOR*}
-    <table class='table table-hover table-striped table-bordered table table-condensed' style='width:900px'>
-        <tr>
-            <th scope='col'><h2> computadoras disponibles</h2></th>
-            {if {$type == "administrador"}}
-                <th scope='col'><a class="navbar-brand" href="agregarComp">Alta</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </th>
-            {/if}
-        </tr>
-    </table>
+    <div class="contenedor">
+        <h4> computadoras disponibles</h4>
+        {if {$type == "administrador"}}
+            <a class="navbar-brand" href="agregarComp">Alta</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        {/if}
+    </div>
  {/if}
-    <table class='table table-hover table-striped table-bordered table table-condensed' style='width:900px'>
-        <tr>
-            <th scope='col'>Computadora</th>
-            <th scope='col'>Marca</th>
-            <th scope='col'>Sistema Operativo</th>
-        </tr>
+    <div class="contenedor-comp">
         {foreach $listaComp item= computadora}
-           <tr>
-            <td> <b> {strtoupper($computadora->nombre_comp)} </b> </td>
-            <td> <b> {strtoupper($computadora->nombre_marca)}</b> </td>
-            <td> <b>{$computadora->sistOperativo}</b> </td>
-            {if {$type != "administrador"}}
-                <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
-            {/if}
+        <div class="centrar">
+            <b> {strtoupper($computadora->nombre_comp)} </b>
+            <img class="imagen" src="{$computadora->imagen}">
+            <b> {strtoupper($computadora->nombre_marca)}</b>
+            {*<b>{$computadora->sistOperativo}</b>*}
+        </div>
+        {if {$type != "administrador"}}
+            <div class="centrar">
+                <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></h4>
+            </div>
+        {/if}
             {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
-            <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
-                <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
-                <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
+                <h4><a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></h4>
+                <h4><a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></h4>
+                <h4><a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></h4>
             {/if}
-         </tr>
+        </div>
         {/foreach}
-    </table>
-
+    </div>
  
 {include 'footer.tpl'}

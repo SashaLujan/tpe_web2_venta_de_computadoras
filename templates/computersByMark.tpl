@@ -5,7 +5,7 @@
         {include 'header.tpl'}
     {/if}
     {if {$type != "administrador"}} {*SI NO ES UN ADMINISTRADOR*}
-        <div>
+        <div class="contenedor">
             <p>
                 {if {$datosComp[0]->id_marca_fk} == 1}
                     <b>TCL</b> 

@@ -4,7 +4,7 @@
     {if {!$isAdmin}} {*SI NO ES UN ADMINISTRADOR*}
         {include 'header.tpl'}
     {/if}
-        <div>
+        <div class="contenedor">
             <p>
                 {if {$computadora->id_marca} == 1}
                     <b>TCL</b> 

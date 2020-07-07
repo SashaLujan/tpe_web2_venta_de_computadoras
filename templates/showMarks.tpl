@@ -13,28 +13,18 @@
             </div>
         {/if}
     </div>
-
-        <h4><a class="btn btn-dark" href="agregarMarca"><b>Alta</b></a></h4>
-
 {/if}
-<table>
     {foreach from=$listaMarca item=marca} 
-        <tr>
-            <td>
-                <b class="nombre">{$marca->nombre_marca}</b>
-            </td>
-            {if {$type != "administrador"}} {*SI NO ES UN ADMINISTRADOR*}
-                <td>
-                    <a class="btn btn-dark" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
-                </td>          
-            {/if}
-            {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
-                <td>
-                    <a class="btn btn-dark" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
-                    <a class="btn btn-dark" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
-                </td>
-            {/if}
-        </tr>
+    <div class="contenedor">
+        <b class="nombre">{$marca->nombre_marca}</b>
+        {if {$type != "administrador"}} {*SI NO ES UN ADMINISTRADOR*}
+            <a class="btn btn-dark" href="marca_comp/{$marca->id_marca}"><b>Ver Computadoras</b></a>
+        {/if}
+        {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
+            <a class="btn btn-dark" href="editarMarca/{$marca->id_marca}"><b>Modificar</b></a>
+            <a class="btn btn-dark" href="eliminarMarca/{$marca->id_marca}"><b>Baja</b></a>
+            <a class="btn btn-dark" href="agregarMarca"><b>Alta</b></a>
+        {/if}
+    </div>
     {/foreach}
-</table>
 {include 'templates/footer.tpl'}

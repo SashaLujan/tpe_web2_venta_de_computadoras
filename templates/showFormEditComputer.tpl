@@ -1,6 +1,6 @@
 {include 'templates/headerAdmin.tpl'}
-    <div class="container">  
-        <h1>Modifique los datos de la computadora</h1>
+    <div class="contenedor">  
+        <h4>Modifique los datos de la computadora</h4>
         <form action="guardarEditComputer" method="POST" class="my-4">
             <input name="id_computadora" type="hidden" value={$datosComp>id_computadora} class="form-control">
                 <div class="form-group">

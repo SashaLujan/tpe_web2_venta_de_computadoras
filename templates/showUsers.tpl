@@ -1,11 +1,11 @@
 {include 'headerAdmin.tpl'}
 <div>
-    <p><b>Usuarios registrados</b></p>
+    <h4><b>Usuarios registrados</b></h4>
 </div>
 <div>
     {foreach from=$usuarios item=usuario}
         {if {$usuario->nombre != "a"}}
-            <div>
+            <div class="contenedor">
                 <form action="editar_usuario/{$usuario->id_usuario}" method="POST">
                     <input type="hidden" name="id_usuario" value="{$usuario->id_usuario}">
                     <input class="input-usuario" type="text" readonly="readonly" name="name" value="{$usuario->nombre}">
