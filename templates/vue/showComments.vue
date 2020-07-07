@@ -1,4 +1,4 @@
-<section>
+<section id="app-comments">
     <div>
         <h4><b>Comentarios</b></h4>
         <h4 v-if="promedio > 0" ><b>Promedio: {{ promedio }}</b></h4>

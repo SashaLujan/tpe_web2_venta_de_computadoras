@@ -1,5 +1,5 @@
 <?php
-require_once 'herlpers/auth.helper.php';
+//require_once 'herlpers/auth.helper.php';
 require_once 'models/comentarios.model.php';
 require_once 'models/computers.model.php';
 require_once 'api/api.view.php';
@@ -17,6 +17,8 @@ class CommentsApiController
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");  //Lee el input ingresado
         $this->modelComputers = new ComputersModel;
+        var_dump("hola");
+        die;
     }
 
     public function getComments($params)
@@ -24,6 +26,8 @@ class CommentsApiController
         $id_computadora = $params[':ID'];   //Obtengo el id de una computadora del arreglo asociativo $params
         $id_computadora = $this->modelComputers->get($id_computadora);
         $comentarios = $this->model->getAll($id_computadora);
+        var_dump($comentarios);
+        die;
         if (!empty($comentarios)) {
             $this->view->response($comentarios, 200);
         } else {
