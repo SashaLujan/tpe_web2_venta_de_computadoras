@@ -9,15 +9,14 @@ let app = new Vue({
         admin: 0,
     },
     methods: {
-        delComment: function (id_com) {
+        delComment: function (id_com){
             fetch('api/comentario/' + id_com, {
                 method: 'DELETE',
-
             })
-                .then(response => {
-                    printComments(response);
-                })
-                .catch(error => console.log(error));
+            .then(response => {
+                printComments();
+            })
+            .catch(error => console.log(error));
         }
     }
 })
@@ -34,28 +33,29 @@ let app_form = new Vue({
     },
     methods: {
         addComment: function () {
-            if (document.querySelector("select[name=puntuacion]").value == 0
-                || document.querySelector("textarea[name=comentario]").value == "") {
-                alert("Complete los dos campos");
+            if(document.querySelector("select[name=puntuacion]").value == 0
+                || document.querySelector("textarea[name=comentario]").value == ""){
+                alert("Complete todos los campos");
             }
-            else {
+            else
+            {
                 let data = {
                     comentario: document.querySelector("textarea[name=comentario]").value,
                     usuario: document.querySelector("input[name=usuario]").value,
                     fecha: document.querySelector("input[name=fecha]").value,
                     puntaje: document.querySelector("select[name=puntuacion]").value,
                     id_computadora: document.querySelector("input[name=computadora]").value
-                }
+                } 
                 fetch('api/comentario', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(data)
                 })
-                    .then(response => {
-                        printComments(response);
-                    })
-                    .catch(error => console.log(error));
-            }
+                .then(response => {
+                    printComments();
+                })
+                .catch(error => console.log(error));
+            } 
         }
     }
 })
@@ -72,49 +72,50 @@ function addComment(e) {
         fecha: document.querySelector("input[name=fecha]").value,
         puntaje: document.querySelector("select[name=puntuacion]").value,
         id_computadora: document.querySelector("input[name=computadora]").value
-    }
+    } 
     fetch('api/comentario', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
     })
-        .then(response => {
-            printComments();
-        })
-        .catch(error => console.log(error));
+    .then(response => {
+        printComments();
+    })
+    .catch(error => console.log(error));
 }
 
 function printComments() {
-
+    
     let id_computadora = document.querySelector("input[name=computadora]").value;
     let tipo_usuario = document.querySelector("input[name=usuario]").value;
     //alert(tipo_usuario);
     let suma = 0;
     let cont = 0;
-
-    fetch('api/computadoras/' + id_computadora + '/comentarios')
+    
+    fetch('api/computadoras/' + id_computadora + '/comentarios' )
         .then(response => response.json())
         .then(comentarios => {
-
             // asigno los comentarios de una computadora que me devuelve la API
             app.comentarios = comentarios;
-            for (let comentario of comentarios) {
+            for(let comentario of comentarios){
                 suma += parseInt(comentario.puntaje, 10);
-                cont++;
+                cont ++;
             }
-            app.promedio = parseFloat(suma / cont).toFixed(2);
-            if (tipo_usuario == "administrador") {
+            app.promedio = parseFloat(suma/cont).toFixed(2);
+            if(tipo_usuario == "administrador"){
                 app.admin = 1;
             }
         });
 }
 
+setInterval(printComments, 5000);
+
 //funcion que muestra el form para guardar el comentario
-function printFormAddComment() {
+function printFormAddComment(){
     let tipo_usuario = document.querySelector("input[name=tipo_usuario]").value;
     let nombre_usuario = document.querySelector("input[name=nombre_usuario]").value;
     let id_computadora = document.querySelector("input[name=id_computadora]").value;
-    if (tipo_usuario == "usuario") {
+    if(tipo_usuario == "usuario"){
         app_form.usuario_reg = 1;
         app_form.nombre_usuario = nombre_usuario;
         app_form.id_computadora = id_computadora;
