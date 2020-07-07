@@ -63,6 +63,27 @@ let app_form = new Vue({
 printComments();
 printFormAddComment();
 
+function addComment(e) {
+    e.preventDefault();
+
+    let data = {
+        comentario: document.querySelector("textarea[name=comentario]").value,
+        usuario: document.querySelector("input[name=usuario]").value,
+        fecha: document.querySelector("input[name=fecha]").value,
+        puntaje: document.querySelector("select[name=puntuacion]").value,
+        id_computadora: document.querySelector("input[name=computadora]").value
+    } 
+    fetch('api/comentario', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        printComments();
+    })
+    .catch(error => console.log(error));
+}
+
 function printComments() {
     
     let id_computadora = document.querySelector("input[name=computadora]").value;
