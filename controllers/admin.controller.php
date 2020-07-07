@@ -37,7 +37,7 @@ class AdminController
         $nombreOriginal = $_FILES['foto']['name'];
         // Nombre en el file system:
         $nombreFisico = $_FILES['foto']['tmp_name'];
-        $nombreFinal = "images/computadoras/". uniqid("", true) . "." . strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
+        $nombreFinal = "imagenes/computadoras/". uniqid("", true) . "." . strtolower(pathinfo($nombreOriginal, PATHINFO_EXTENSION));
         move_uploaded_file($nombreFisico, $nombreFinal); 
         return $nombreFinal;
     }

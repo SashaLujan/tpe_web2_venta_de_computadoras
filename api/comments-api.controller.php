@@ -19,7 +19,7 @@ class CommentsApiController
         $this->modelComputers = new ComputersModel;
     }
 
-    public function getComments($params)
+    public function getComments($params = [])
     {
         $id_computadora = $params[':ID'];   //Obtengo el id de una computadora del arreglo asociativo $params
         $id_computadora = $this->modelComputers->get($id_computadora);
@@ -50,7 +50,7 @@ class CommentsApiController
     }
 
     //funcion para comentar
-    public function addComment($params = [])
+    public function addComment()
     {
         //Devuelve el objeto JSON enviado por POST ($body es un objeto JSON)
         $body = $this->getData();
@@ -59,7 +59,7 @@ class CommentsApiController
         $usuario = $body->usuario;
         $fecha = $body->fecha;
         $puntaje = $body->puntaje;
-        $id_computadora =$params[':ID'];
+        $id_computadora = $body->id_computadora;
         $id_comentario = $this->model->insert($comentario, $usuario, $fecha, $puntaje, $id_computadora);
 
         if ($id_comentario) {
