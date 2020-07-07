@@ -73,6 +73,7 @@ class LoginController
                 } else {
                     $passwordCifrado = password_hash($password, PASSWORD_DEFAULT);
                     $this->modelLogin->insert($nombre, $username, $passwordCifrado, $tipo);
+                    $user = $this->modelLogin->getAdmin($username);
                     if (session_status() != PHP_SESSION_ACTIVE) {
                         session_start(); //Abro la sesion
                     }
@@ -97,6 +98,10 @@ class LoginController
     {
         $usuarios = $this->modelLogin->get();
         $tipos = $this->modelLogin->types();
+        if(count($usuarios) == 1){
+            $this->viewAdmin->showUsers($usuarios, $tipos, "no hay usuarios registtrados.");
+            die;
+        }
         $this->viewAdmin->showUsers($usuarios, $tipos);
     }
 
@@ -108,7 +113,17 @@ class LoginController
     }
 
     //modifica los datos de un usuario
-    public function editUser()
+    public function editUser($id_usuario)
     {
+        if(empty($_POST['name']) || empty($_POST['username']) || empty($_POST['type'])) {
+            $usuarios = $this->modelLogin->get();
+            $tipos = $this->modelLogin->types();
+            $this->viewAdmin->showUsers($usuarios, $tipos, "complete todos los campos");
+        } else {
+            $this->modelLogin->update($id_usuario, $_POST['type']);
+            $usuarios = $this->modelLogin->get();
+            $tipos = $this->modelLogin->types();
+            $this->viewAdmin->showUsers($usuarios, $tipos, "cambios guardados");
+        }
     }
 }

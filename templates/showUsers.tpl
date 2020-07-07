@@ -4,7 +4,7 @@
 </div>
 <div>
     {foreach from=$usuarios item=usuario}
-        {if {$usuario->nombre != " "}}
+        {if {$usuario->nombre != "a"}}
             <div>
                 <form action="editar_usuario/{$usuario->id_usuario}" method="POST">
                     <input type="hidden" name="id_usuario" value="{$usuario->id_usuario}">
@@ -16,9 +16,9 @@
                             <option>{$tipo->tipo}</option>
                         {/foreach}
                     </select>
-                    <div class="btns-usuario">
-                        <a class="btn btn-danger btn-volver" href="eliminar_usuario/{$usuario->id_usuario}"><b>Eliminar</b></a>
-                        <button type="submit" class="btn btn-danger btn-volver"><b>Guardar</b></button>
+                    <div>
+                        <a class="btn btn-dark" href="eliminar_usuario/{$usuario->id_usuario}"><b>Eliminar</b></a>
+                        <button type="submit" class="btn btn-dark"><b>Guardar</b></button>
                     </div>
                 </form>
             </div>

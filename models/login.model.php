@@ -78,6 +78,6 @@ class LoginModel
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("UPDATE usuarios SET tipo = ? WHERE id_usuario = $id_usuario"); // prepara la consulta
-        $sentencia->execute([$tipo]); // ejecuta
+        $sentencia->execute([$id_usuario,$tipo]); // ejecuta
     }
 }
