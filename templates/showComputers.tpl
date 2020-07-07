@@ -33,6 +33,7 @@
                 <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
             {/if}
             {if {$type == "administrador"}} {*SI ES UN ADMINISTRADOR*}
+            <td> <a href="verComp/{$computadora->id_computadora}" class="btn btn-link">Ver</a></td>
                 <td> <a href="eliminarComp/{$computadora->id_computadora}" class="btn btn-link">Borrar </a></td>
                 <td> <a href="editarComp/{$computadora->id_computadora}" class="btn btn-link">Editar </a></td>
             {/if}

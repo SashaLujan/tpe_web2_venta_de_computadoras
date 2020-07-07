@@ -38,6 +38,6 @@
                     </ul>
                 </div>
                 <div>
-                    <a class="navbar-brand btn btn-dark" href="cerrar_sesion">Usuario: {$nameAdmin} | <b>Cerrar Sesión</b></a>
+                    <a class="navbar-brand btn btn-dark" href="cerrar_sesion">Usuario: {$nameUser} | <b>Cerrar Sesión</b></a>
                 </div>
             </nav>

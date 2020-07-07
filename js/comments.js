@@ -15,7 +15,7 @@ let app = new Vue({
 
             })
                 .then(response => {
-                    printComments();
+                    printComments(response);
                 })
                 .catch(error => console.log(error));
         }
@@ -30,7 +30,7 @@ let app_form = new Vue({
     data: {
         usuario_reg: 0,
         nombre_usuario: "",
-        id_jugador: 0
+        id_computadora: 0
     },
     methods: {
         addComment: function () {
@@ -52,7 +52,7 @@ let app_form = new Vue({
                     body: JSON.stringify(data)
                 })
                     .then(response => {
-                        printComments();
+                        printComments(response);
                     })
                     .catch(error => console.log(error));
             }

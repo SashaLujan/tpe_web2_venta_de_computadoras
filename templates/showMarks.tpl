@@ -13,9 +13,9 @@
             </div>
         {/if}
     </div>
-    <table>
+
         <h4><a class="btn btn-dark" href="agregarMarca"><b>Alta</b></a></h4>
-    </table>
+
 {/if}
 <table>
     {foreach from=$listaMarca item=marca} 

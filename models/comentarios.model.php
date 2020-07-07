@@ -23,14 +23,14 @@ class ComentariosModel
         return $sentencia->execute([$comentario, $usuario, $fecha, $puntaje, $id_computadora]); // ejecuta
     }
 
-    public function delete($id_comentarios)
+    public function delete($id_comentario)
     {
 
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta
         $sentencia = $db->prepare("DELETE FROM comentarios WHERE id_comentarios = ?"); // prepara la consulta
-        $sentencia->execute([$id_comentarios]); // ejecuta 
+        $sentencia->execute([$id_comentario]); // ejecuta 
         return $sentencia;
     }
 
@@ -40,7 +40,9 @@ class ComentariosModel
         // 1. abro la conexión con MySQL 
         $db = $this->createConection();
         // 2. enviamos la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_computadora = ?"); // prepara la consulta
+        $sentencia = $db->prepare("SELECT usuarios.nombre, comentarios.id_comentario, comentarios.comentario, 
+        comentario.puntaje, comentario.fecha, comentario.id_computadora
+        FROM computadora JOIN usuarios JOIN comentarios WHERE computadora.id_computadora = ?"); // prepara la consulta
         $sentencia->execute([$id_computadora]); // ejecuta
         $comentarios = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
         return $comentarios;

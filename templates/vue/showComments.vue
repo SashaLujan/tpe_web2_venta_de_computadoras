@@ -1,7 +1,7 @@
-<section id="app-comments">
-    <div class="coment-punt">
+<section>
+    <div>
         <h4><b>Comentarios</b></h4>
-        <h4 v-if="promedio > 0"><b>Promedio Puntaje: {{ promedio }}</b></h4>
+        <h4 v-if="promedio > 0" ><b>Promedio: {{ promedio }}</b></h4>
     </div>
     <div>
         <h3 v-if="!comentarios.length"><b>No hay comentarios sobre la computadora</b></h3>

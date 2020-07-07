@@ -1,6 +1,7 @@
 <?php
-
+require_once 'herlpers/auth.helper.php';
 require_once 'models/comentarios.model.php';
+require_once 'models/computers.model.php';
 require_once 'api/api.view.php';
 
 class CommentsApiController
@@ -8,17 +9,20 @@ class CommentsApiController
     private $model;
     private $view;
     private $data;
+    private $modelComputers;
 
     public function __construct()
     {
         $this->model = new ComentariosModel();
         $this->view = new APIView();
         $this->data = file_get_contents("php://input");  //Lee el input ingresado
+        $this->modelComputers = new ComputersModel;
     }
 
     public function getComments($params)
     {
         $id_computadora = $params[':ID'];   //Obtengo el id de una computadora del arreglo asociativo $params
+        $id_computadora = $this->modelComputers->get($id_computadora);
         $comentarios = $this->model->getAll($id_computadora);
         if (!empty($comentarios)) {
             $this->view->response($comentarios, 200);
@@ -45,7 +49,8 @@ class CommentsApiController
         return json_decode($this->data);
     }
 
-    public function addComment()
+    //funcion para comentar
+    public function addComment($params = [])
     {
         //Devuelve el objeto JSON enviado por POST ($body es un objeto JSON)
         $body = $this->getData();
@@ -54,11 +59,11 @@ class CommentsApiController
         $usuario = $body->usuario;
         $fecha = $body->fecha;
         $puntaje = $body->puntaje;
-        $id_computadora = $body->id_computadora;
+        $id_computadora =$params[':ID'];
         $id_comentario = $this->model->insert($comentario, $usuario, $fecha, $puntaje, $id_computadora);
 
         if ($id_comentario) {
-            $this->view->response("Se guardo el comentario", 200);
+            $this->view->response("Se agrego el comentario", 200);
         } else {
             $this->view->response("El comentario no se pudo agregar", 500);
         }

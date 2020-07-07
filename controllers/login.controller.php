@@ -97,7 +97,7 @@ class LoginController
     {
         $usuarios = $this->modelLogin->get();
         $tipos = $this->modelLogin->types();
-        $this->view->showUsers($usuarios, $tipos);
+        $this->viewAdmin->showUsers($usuarios, $tipos);
     }
 
     //elimina un usuario
