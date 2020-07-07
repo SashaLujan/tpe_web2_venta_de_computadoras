@@ -63,7 +63,7 @@ let app_form = new Vue({
 printComments();
 printFormAddComment();
 
-function addComment(e) {
+/*function addComment(e) {
     e.preventDefault();
 
     let data = {
@@ -82,7 +82,7 @@ function addComment(e) {
         printComments();
     })
     .catch(error => console.log(error));
-}
+}*/
 
 function printComments() {
     
@@ -98,7 +98,7 @@ function printComments() {
             // asigno los comentarios de una computadora que me devuelve la API
             app.comentarios = comentarios;
             for(let comentario of comentarios){
-                suma += parseInt(comentario.puntaje, 10);
+                suma += parseInt(comentario.puntaje);
                 cont ++;
             }
             app.promedio = parseFloat(suma/cont).toFixed(2);
@@ -108,7 +108,7 @@ function printComments() {
         });
 }
 
-setInterval(printComments, 5000);
+//setInterval(printComments, 5000);
 
 //funcion que muestra el form para guardar el comentario
 function printFormAddComment(){

@@ -32,7 +32,7 @@ class MarksModel
         //Creamos la consulta para obtener una categoria
         $sentencia = $db->prepare("SELECT * FROM marca  WHERE id_marca=?"); // prepara la consulta
         $sentencia->execute([$id_marca]); // ejecuta
-        $marca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        $marca = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $marca;
     }
 
@@ -43,7 +43,7 @@ class MarksModel
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("SELECT * FROM marca WHERE nombre_marca=?"); // prepara la consulta
         $sentencia->execute([$name]); // ejecuta
-        $marca = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        $marca = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $marca;
     }
 

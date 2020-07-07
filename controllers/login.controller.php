@@ -109,7 +109,9 @@ class LoginController
     public function deleteUser($id_usuario)
     {
         $this->modelLogin->delete($id_usuario);
-        header('Location: ' . BASE_URL . 'listar_usuarios');
+        $usuarios = $this->modelLogin->get();
+        $tipos = $this->modelLogin->types();
+        $this->viewAdmin->showUsers($usuarios, $tipos, "El usuario se eliminó correctamente");
     }
 
     //modifica los datos de un usuario

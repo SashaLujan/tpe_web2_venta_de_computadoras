@@ -53,7 +53,7 @@ class ComentariosModel
         // 2. enviamos la consulta (3 pasos)
         $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_comentario = ?"); // prepara la consulta
         $sentencia->execute([$id_comentario]); // ejecuta
-        $comentario = $sentencia->fetchAll(PDO::FETCH_OBJ); // obtiene la respuesta
+        $comentario = $sentencia->fetch(PDO::FETCH_OBJ); // obtiene la respuesta
         return $comentario;
     }
 }

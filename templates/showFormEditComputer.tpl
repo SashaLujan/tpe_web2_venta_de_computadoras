@@ -1,7 +1,7 @@
 {include 'templates/headerAdmin.tpl'}
     <div class="contenedor">  
-        <h4>Modifique los datos de la computadora</h4>
         <form action="guardarEditComputer" method="POST" class="my-4">
+            <h4>Modifique los datos de la computadora</h4>
             <input name="id_computadora" type="hidden" value={$datosComp>id_computadora} class="form-control">
                 <div class="form-group">
                     <label>Nombre de computadora</label>
@@ -24,8 +24,8 @@
                     <input type="text" name="foto" value="{$datosComp->imagen}">
                 </div>
             {*<input name="marca" type="hidden" value={$computadora->id_marca} class="form-control">*}
-            <button type="submit" class="btn btn-danger"><b>Guardar</b></button>
-            <a class="btn btn-danger" href="listaComp"><b>Volver</b></a>
+            <button type="submit" class="btn btn-dark"><b>Guardar</b></button>
+            <a class="btn btn-dark" href="listaComp"><b>Volver</b></a>
         </form>
         </div>
 

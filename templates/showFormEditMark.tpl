@@ -9,8 +9,8 @@
                 <input name="nombre" type="text" value={$marca->nombre_marca} class="form-control">
             </div>
             {/foreach}
-            <button type="submit" class="btn btn-danger">Guardar</button>
-            <a class="btn btn-danger" href="listaMarca"><b>Volver</b></a>
+            <button type="submit" class="btn btn-dark">Guardar</button>
+            <a class="btn btn-dark" href="listaMarca"><b>Volver</b></a>
         </form>
     </div>
 
