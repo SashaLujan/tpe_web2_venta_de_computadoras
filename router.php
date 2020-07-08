@@ -39,7 +39,7 @@ switch ($parametros[0]) {
                 break;
         case 'ver_comp_marca':
                 $controller = new PublicController();
-                $controller->viewComputerMark($parametros[1],$parametros[2]);
+                $controller->viewComputerMark($parametros[1]);
                 break;
 
                 //acciones del admin.controller

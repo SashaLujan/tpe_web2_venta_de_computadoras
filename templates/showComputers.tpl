@@ -6,7 +6,7 @@
 {/if}
 {if {$type != "administrador"}} {*SI ES UN ADMINISTRADOR*}
     <div class="contenedor">
-        <h4> computadoras disponibles</h4>
+        <h4> Computadoras disponibles</h4>
     </div>
 {/if}
     <div class="contenedor">

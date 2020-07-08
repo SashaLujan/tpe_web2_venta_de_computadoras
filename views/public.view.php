@@ -31,9 +31,9 @@ class PublicView
     }
 
     //muetra todas las computadoras
-    public function showComputers($computadoras)
+    public function showComputers($computadora)
     {
-        $this->smarty->assign('listaComp', $computadoras);
+        $this->smarty->assign('listaComp', $computadora);
         $this->smarty->display('templates/showComputers.tpl');
     }
 
@@ -45,10 +45,10 @@ class PublicView
     }
 
     //muetra la computadora de una marca
-    public function showComputerMark($computadora, $computadoraConMarca)
+    public function showComputerMark($computadora)
     {
         $this->smarty->assign('datosComp', $computadora);
-        $this->smarty->assign('listaComp', $computadoraConMarca);
+        //$this->smarty->assign('listaComp', $computadoraConMarca);
         $this->smarty->display('templates/computersMark.tpl');
     }
 

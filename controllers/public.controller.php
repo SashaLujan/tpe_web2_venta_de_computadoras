@@ -27,9 +27,10 @@ class PublicController
     public function showComputer()
     {
         //pido las computadoras al modelo
-        $computadoras = $this->modelComputers->getAll();
+        $computadora = $this->modelComputers->getComputerMarks();
+        //$computadora = $this->modelComputers->getAll();
         //actualizo la vista
-        $this->viewPublic->showComputers($computadoras);
+        $this->viewPublic->showComputers($computadora);
     }
 
     //muestra una sola computadora
@@ -45,9 +46,9 @@ class PublicController
     }
 
     //muestra los datos de una computadora
-    public function viewComputerMark($id_computadora, $marca)
+    public function viewComputerMark($id_computadora)
     {
-        $computadoraConMarca = $this->modelComputers->getComputerMarks($marca);
+        $computadoraConMarca = $this->modelComputers->getComputerMarks();
         $computadora = $this->modelComputers->get($id_computadora);
         if (!empty($computadora)) {
             $this->viewPublic->showComputerMark($computadora, $computadoraConMarca);
